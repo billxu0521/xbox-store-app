@@ -2,7 +2,7 @@ module.exports = {
     filenameHashing: false,
     publicPath: process.env.NODE_ENV === 'development'
     ? ''
-    : 'xbox-store-app',
+    : 'xbox-store-app/dist',
     pluginOptions: {
       cordovaPath: 'src-cordova'
     },
