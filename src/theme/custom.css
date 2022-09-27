@@ -1,0 +1,141 @@
+/*
+gernal layout
+*/
+ion-back-button {
+  display: block;
+}
+
+.card-container-col{
+  background: green;
+  margin: 1% 1% 1% 1%;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+}
+.card-container-col:hover {
+  cursor: pointer;
+}
+.card-title{
+  color: green;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.game-card:hover{
+  cursor: pointer;
+}
+
+/*
+game-list-card
+*/
+
+.full-game.game-card {
+  min-width: 20vw;
+  max-width: 20vw;
+}
+.game-card-important-tag {
+  
+  border-radius: 5px;
+
+}
+
+.game-card-price-off {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 40%;
+  height: 10%;
+  text-align: center;
+  font: bold;
+  font-size: 1.5em;
+  color: white;
+  background-color: seagreen;
+}
+.game-card-gamepass{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 40%;
+  height: 10%;
+  text-align: center;
+  font: bold;
+  font-size: 1.2em;
+  color: white;
+  background-color: darkorange;
+}
+
+.game-card-eaplay{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 40%;
+  height: 10%;
+  text-align: center;
+  font: bold;
+  font-size: 1.2em;
+  color: white;
+  background-color: darkred;
+}
+.game-card-box-imgs {
+  position: relative;
+}
+.game-card-price {
+  color: rgb(39, 39, 39);
+  font-size: 1.5em;
+}
+.game-card-sales-price {
+  color: grey;
+  font-size: 1.2em;
+}
+
+.game-card-deals {
+  color: rgb(39, 39, 39);
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/*
+game-detail-card
+*/
+
+.game-detail-card-img img{
+  max-height: 60vh;
+}
+
+.game-detail-card-img .swiper-slide{
+  max-height: 40vh;
+  background-color: gray;
+
+}
+
+.game-detail-card-title{
+  font-size: 2.2em;
+}
+
+.game-detail-card-price{
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.game-detail-card-sales-price{
+  color: grey;
+  font-size: 2em;
+}
+
+.game-detail-card-deals{
+  color: black;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+
+.game-detail-card-description{
+  font-size: 1.2em;
+}
+
+.game-detail-card-thumbnail{
+  margin: auto;
+}
+

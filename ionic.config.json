@@ -1,0 +1,7 @@
+{
+  "name": "xbox-web-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
