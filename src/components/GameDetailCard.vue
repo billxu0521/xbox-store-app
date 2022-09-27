@@ -1,5 +1,6 @@
 <template>
-  <ion-page>
+  <ion-page v-for="(item) in data.gamedetaildata"
+      :key="item.title">
     <ion-header translucent>
       <ion-toolbar>
         <ion-title>「{{item.title}}」遊戲資訊</ion-title>
@@ -11,8 +12,6 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" class="game-detail-card-content">
-    <div v-for="(item) in data.gamedetaildata"
-      :key="item.title">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -90,7 +89,6 @@
           </ion-col>
         </ion-row>      
      </ion-grid>
-    </div>
   </ion-content>
 </ion-page>
 </template>

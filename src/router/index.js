@@ -15,7 +15,7 @@ const routes = [
     component: TabsPage,
     children: [
       {
-        path: 'gamelist',
+        path: '/gamelist',
         name: 'GameList',
         component: GameList,
       },
@@ -25,22 +25,22 @@ const routes = [
         component: GameDetailCard,
       },
       {
-        path: 'newslist',
+        path: '/newslist',
         name: 'NewsList',
         component: NewsList,
       },
       {
-        path: 'gamelist/:page',
+        path: '/gamelist/:page',
         name: 'GameFullList',
         component: GameFullListCard,
       },
       {
-        path: 'gamepass/',
+        path: '/gamepass/',
         name: 'GamePass',
         component: GamePassList,
       },
       {
-        path: 'gamepass/:page',
+        path: '/gamepass/:page',
         name: 'GamePassFullList',
         component: GamePassFullListCard,
       },
