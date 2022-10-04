@@ -36,7 +36,7 @@
 import { IonThumbnail,IonImg,IonCard,IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import axios from 'axios';
 import { reactive,onMounted } from 'vue';
-const url = 'http://localhost:3031/api/news' ;
+const url = 'api/news' ;
 export default  {
   name: 'NewsList',
   components: {IonThumbnail, IonImg,IonCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },

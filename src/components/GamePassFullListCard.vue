@@ -3,7 +3,7 @@
     <ion-header translucent>
       <ion-toolbar>
         <ion-title>Game Pass全部遊戲列表</ion-title>
-        <ion-buttons  @click="goBack()">
+        <ion-buttons slot="start"  @click="goBack()">
           <ion-back-button >
             <ion-icon ></ion-icon>
         </ion-back-button>

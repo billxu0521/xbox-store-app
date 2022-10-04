@@ -14,6 +14,24 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+            <ion-row class="card-xbox-container-row">
+              <ion-col class="card-xbox-container-col link" @click="gamePassPageLink('new')">
+                新加入
+              </ion-col>
+              <ion-col class="card-xbox-container-col link" @click="gamePassPageLink('coming')">
+                即將加入
+              </ion-col>
+              <ion-col class="card-xbox-container-col link" @click="gamePassPageLink('leaving')">
+                即將離開
+              </ion-col>
+              <ion-col class="card-xbox-container-col link" @click="gamePassPageLink('all')">
+                瀏覽全部
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-text class="card-title">新加入</ion-text>
             <game-pass-simple-list-card v-bind:url="gameLink('new')"/>
           </ion-col>
@@ -30,26 +48,7 @@
           <game-pass-simple-list-card v-bind:url="gameLink('leaving')"/>
           </ion-col>
         </ion-row>
-        <ion-row>
-          <ion-col class="card-container-col link" @click="gamePassPageLink('all')">
-            瀏覽全部
-          </ion-col>
-          </ion-row>
-          <ion-row>
-          <ion-col>
-            <ion-row class="card-container-row">
-              <ion-col class="card-container-col link" @click="gamePassPageLink('new')">
-                新加入
-              </ion-col>
-              <ion-col class="card-container-col link" @click="gamePassPageLink('coming')">
-                即將加入
-              </ion-col>
-              <ion-col class="card-container-col link" @click="gamePassPageLink('leaving')">
-                即將離開
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
+        
       </ion-grid>
     </ion-content>
   </ion-page>

@@ -3,9 +3,6 @@
       :modules="modules"
       :centeredSlides="false"
       :spaceBetween="0"
-      :pagination="{
-        clickable: true,
-      }"
       :navigation="true"
       :virtual="true"
       :loopFillGroupWithBlank="true"
@@ -16,7 +13,7 @@
         :key="item">
       <div class="game-card" >
           <ion-thumbnail class="game-box-thumbnail" slot="start">
-            <ion-skeleton-text style="height: 50vh;" :animated="true"></ion-skeleton-text>
+            <ion-skeleton-text style="height: 30vh;" :animated="true"></ion-skeleton-text>
           </ion-thumbnail>
           <div>
           <ion-text >
@@ -33,9 +30,6 @@
       :modules="modules"
       :centeredSlides="false"
       :spaceBetween="0"
-      :pagination="{
-        clickable: true,
-      }"
       :navigation="true"
       :virtual="true"
       :loop="true"
@@ -54,13 +48,11 @@
           <img class="game-box-image" v-else v-lazy="{ src: item.images.boxart[1].url, loading: defaultimage, error: defaultimage }">
           
         </ion-thumbnail>
-          <ion-subtitle>開發商:{{item.developer}}</ion-subtitle>
-          <ion-title>{{item.title}}</ion-title>
-          <div v-if="typeof(item.price.deal)!== 'undefined'">
-            <ion-text class="game-card-sales-price md">
-              <s>NT${{item.price.amount}}</s>
-            </ion-text >
-            <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
+        <div v-if="typeof(item.price.deal)!== 'undefined'">
+          <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
+          <ion-text class="game-card-sales-price md">
+            <s>NT${{item.price.amount}}</s>
+          </ion-text >
           </div>
           <div v-else>
             <div v-if="item.price.amount == '0'">
@@ -70,7 +62,13 @@
               <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
             </div>
           </div>
-
+        <div>
+          <ion-text class="game-card-developer">開發商:{{item.developer}}</ion-text>
+        </div>
+        <div>
+          <ion-text class="game-card-title">{{item.title}}</ion-text>
+        </div>
+        
       </div>
     </swiper-slide>
   </swiper>

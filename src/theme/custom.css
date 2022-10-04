@@ -5,7 +5,7 @@ ion-back-button {
   display: block;
 }
 
-.card-container-col{
+.card-xbox-container-col{
   background: green;
   margin: 1% 1% 1% 1%;
   border-radius: 10px;
@@ -13,18 +13,38 @@ ion-back-button {
   color: white;
   font-size: 2em;
 }
-.card-container-col:hover {
+
+.card-xbox-col:hover {
   cursor: pointer;
 }
+
 .card-title{
   color: green;
   font-size: 1.5em;
   font-weight: 900;
 }
 
+
 .game-card:hover{
   cursor: pointer;
 }
+
+.game-card-developer{
+  font-size: 1em;
+  color: #4F4F4F		;
+}
+
+.game-card-title{
+  font-size: 1.5em;
+  color: #4F4F4F		;
+  font-weight: 500;
+}
+
+.card-xbox-container-row{
+  width: 80vw;
+  margin: auto;
+}
+
 
 /*
 game-list-card
@@ -35,9 +55,7 @@ game-list-card
   max-width: 20vw;
 }
 .game-card-important-tag {
-  
   border-radius: 5px;
-
 }
 
 .game-card-price-off {
@@ -85,13 +103,13 @@ game-list-card
 .game-card-sales-price {
   color: grey;
   font-size: 1.2em;
+  padding-left: 1em;
 }
 
 .game-card-deals {
   color: #019858;
   font-size: 1.5em;
   font-weight: 500;
-  padding-left: 1em;
   
 }
 
