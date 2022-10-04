@@ -1,8 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-
 import { IonicVue } from '@ionic/vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue3-lazyload'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -25,14 +27,17 @@ import './theme/variables.css';
 import './theme/custom.css';
 
 
-import VueLazyLoad from 'vue3-lazyload'
-
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(VueLazyLoad,{
     
   });
+
+app.use(VueAxios, axios)
+app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
+
+axios.defaults.baseURL="http://localhost";
 
 router.isReady().then(() => {
   app.mount('#app');

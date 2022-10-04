@@ -1,5 +1,36 @@
 <template>
-  <swiper :modules="modules"
+  <swiper v-if="data.loaded"
+      :modules="modules"
+      :centeredSlides="false"
+      :spaceBetween="0"
+      :pagination="{
+        clickable: true,
+      }"
+      :navigation="true"
+      :virtual="true"
+      :loopFillGroupWithBlank="true"
+      :breakpoints="swiperOptions.breakpoints"
+      class="cardswiper"
+      @swiper="setSwiperRef">
+    <swiper-slide v-for="(item) in 10"
+        :key="item">
+      <div class="game-card" >
+          <ion-thumbnail class="game-box-thumbnail" slot="start">
+            <ion-skeleton-text style="height: 50vh;" :animated="true"></ion-skeleton-text>
+          </ion-thumbnail>
+          <div>
+          <ion-text >
+            <ion-skeleton-text :animated="true" style="width: 100%;"></ion-skeleton-text>
+          </ion-text >
+            <ion-skeleton-text :animated="true" style="width: 30%;"></ion-skeleton-text>
+          </div>
+      </div>
+    </swiper-slide>
+  </swiper>
+
+
+  <swiper v-if="!data.loaded"
+      :modules="modules"
       :centeredSlides="false"
       :spaceBetween="0"
       :pagination="{
@@ -10,24 +41,25 @@
       :loop="true"
       :loopFillGroupWithBlank="true"
       :breakpoints="swiperOptions.breakpoints"
-      class="mySwiper"
+      class="cardswiper"
       @swiper="setSwiperRef">
     <swiper-slide v-for="(item) in data.gamelistdata"
         :key="item.title">
-      <div @click="gameLink(item.id)">
-        <ion-thumbnail class="game-card-box-imgs">
+      <div class="game-card" @click="gameLink(item.id)">
+        <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
           <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">Ea Play</span>
-          <img v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }">
+          <img class="game-box-image" v-if="typeof(item.images.boxart.url)!== 'undefined'" v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }">
+          <img class="game-box-image" v-else v-lazy="{ src: item.images.boxart[1].url, loading: defaultimage, error: defaultimage }">
+          
         </ion-thumbnail>
           <ion-subtitle>開發商:{{item.developer}}</ion-subtitle>
           <ion-title>{{item.title}}</ion-title>
           <div v-if="typeof(item.price.deal)!== 'undefined'">
-            <ion-text class="game-card-price">
+            <ion-text class="game-card-sales-price md">
               <s>NT${{item.price.amount}}</s>
             </ion-text >
-            <br />
             <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
           </div>
           <div v-else>
@@ -46,13 +78,13 @@
 </template>
 
 <script >
-import { IonThumbnail} from '@ionic/vue';
+import { IonSkeletonText,IonThumbnail} from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-import axios from 'axios';
- // Import Swiper styles
- import 'swiper/css';
+import { inject } from 'vue'
+// Import Swiper styles
+import 'swiper/css';
 
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -60,15 +92,16 @@ import 'swiper/css/virtual';
 
 import { Pagination, Navigation, Virtual } from 'swiper';
 
-
 export default defineComponent({
   name: 'GameSimpleListCard',
-  components: { Swiper,SwiperSlide,IonThumbnail },
+  components: { IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
   props: ['url'],
   setup(props) {
+    const axios = inject('axios') 
     const defaultimage = 'assets/imgs/default-image.png';
     const data = reactive({
         gamelistdata:[],
+        loaded:true,
     });
     const slides = ref(
       Array.from({ length: 100 }).map((_, index) => `Slide ${index + 1}`)
@@ -118,6 +151,7 @@ export default defineComponent({
           .then((res)=>{
               console.log(res.data)
               data.gamelistdata = res.data
+              data.loaded = false
         })
       });
     

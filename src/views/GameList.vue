@@ -1,10 +1,12 @@
 <template>
   <ion-page>
+    
     <ion-header>
       <ion-toolbar>
-        <ion-title size="large">Xbox 遊戲查詢網</ion-title>
+        <ion-title size="large">Xbox 遊戲查詢網遊戲列表</ion-title>
       </ion-toolbar>
     </ion-header>
+  
     <ion-content :fullscreen="true">
       <ion-grid>
         <ion-row>
@@ -61,28 +63,38 @@
 
 <script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
 
-export default  {
+export default defineComponent({
   name: 'GameList',
   components: { GameSimpleListCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  props: {
+    timeout: { type: Number, default: 1000 },
+  },
   setup() {
     const skipitems = 0;
     const store = 'TW'; 
     const lang = 'zh-TW';
+    
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     let gameLink = function(apilistname) {
-      return `http://52.191.89.252:3031/api/games?list=${apilistname}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
+      this.url = "/api"
+      
+      return `/api/games?list=${apilistname}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     }
+
     return {
       gameLink,
+     
     };
   },
+  
   methods: {
     gamePassPageLink(page) {
       console.log('1');
       window.location.href =  'gamepass/' + page;
     }
   },
-}
+})
 </script>

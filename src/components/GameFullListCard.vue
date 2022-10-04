@@ -11,21 +11,41 @@
       </ion-toolbar>
     </ion-header>
     <ion-content >
-      <ion-grid>
+      <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card" size="12" size-md v-for="(item) in data.gamelistdata"
+          <ion-col class="full-game game-card ion-text-center" size="12" size-md v-for="(item) in 12"
+            :key="item">
+            <ion-thumbnail class="game-box-thumbnail" >
+              <ion-skeleton-text style="height: 40vh;" :animated="true"></ion-skeleton-text>
+            </ion-thumbnail>
+            <div>    
+              <p>
+                <ion-skeleton-text :animated="true" style="width: 100%; "></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text :animated="true" style="width: 30%;"></ion-skeleton-text>
+              </p>        
+              
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid v-if="!data.loaded">
+        <ion-row class="ion-justify-content-between">
+          <ion-col class="full-game game-card ion-text-center" size="12" size-md v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
-            <ion-thumbnail class="game-card-box-imgs">
+            <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-              <img class="game-box-image" v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }">
+              <img class="game-box-image" v-if="typeof(item.images.boxart.url)!== 'undefined'" v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }">
+              <img class="game-box-image" v-else v-lazy="{ src: item.images.boxart[1].url, loading: defaultimage, error: defaultimage }">       
             </ion-thumbnail>
-            <ion-subtitle>開發商:{{item.developer}}</ion-subtitle>
+            <ion-subtitle >開發商:{{item.developer}}</ion-subtitle>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
-              <ion-text class="game-card-sales-price">
+              <ion-text class="game-card-sales-price " >
                 <s>NT${{item.price.amount}}</s>
               </ion-text >
-              <br />
               <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
             </div>
             <div v-else>
@@ -57,19 +77,21 @@
 
 <script>
 import { 
+  IonSkeletonText,
   IonContent, 
   IonInfiniteScroll, 
   IonInfiniteScrollContent,
   IonBackButton,
-  IonPage 
+  IonPage ,
 } from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
-import axios from 'axios';
+import { inject } from 'vue'
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'GameFullListCard',
   components: { 
+    IonSkeletonText,
     IonContent, 
     IonInfiniteScroll, 
     IonInfiniteScrollContent,
@@ -77,6 +99,7 @@ export default defineComponent({
     IonPage
    },
   setup() {
+    const axios = inject('axios') 
     const route = useRoute();
     const { page } = route.params;
     
@@ -89,19 +112,21 @@ export default defineComponent({
     let url = '';
     let data = reactive({
         gamelistdata:[],
+        loaded:true,
     });
     const isDisabled = ref(false);
     const toggleInfiniteScroll = () => {
       isDisabled.value = !isDisabled.value;
     }
     let pushData = () => {
-      url = `http://52.191.89.252:3031/api/games?list=${page}&skipitems=${skipitems}&store=${store}&lang=${lang}&count=${count}`;  
+      url = `/api/games?list=${page}&skipitems=${skipitems}&store=${store}&lang=${lang}&count=${count}`;  
       axios.get(url)
         .then((res)=>{
             console.log(res.data);
             (res.data).forEach(element => {
               console.log(element);
               data.gamelistdata.push(element)
+              data.loaded = false
             });
       })
       skipitems = skipitems + 12;  

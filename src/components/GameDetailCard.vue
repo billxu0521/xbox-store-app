@@ -39,7 +39,7 @@
             <ion-chip v-if="item.game_pass === true" class="game-detail-card-important-tag game-detail-card-gamepass">Game Pass</ion-chip>
             <ion-chip v-if="item.ea_play === true" class="game-detail-card-important-tag game-detail-card-eaplay">Ea Play</ion-chip>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
-              <ion-chip class="game-card-price">{{item.price.off}}% off</ion-chip>
+              <ion-chip class="game-card-important-tag game-detail-card-sale-off">{{item.price.off}}% off</ion-chip>
               <div>
                 <ion-text class="game-detail-card-sale-price">
                   <s>NT${{item.price.amount}}</s>
@@ -128,7 +128,7 @@ export default defineComponent({
 
     //等基本DOM渲染後再讀資料
     onMounted(() => {
-        const url = `http://52.191.89.252:3031/api/games?id=${id}&store=${store}&lang=${lang}`;
+        const url = `/api/games?id=${id}&store=${store}&lang=${lang}`;
         axios.get(url)
           .then((res)=>{
               console.log(res.data)

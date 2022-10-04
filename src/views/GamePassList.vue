@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>GameList</ion-title>
+        <ion-title>Xbox 遊戲查詢網 Xbox Pass 遊戲列表</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -67,7 +67,7 @@ export default  {
     const lang = 'zh-TW';
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     let gameLink = function(apilistname) {
-      return `http://52.191.89.252:3031/api/gamepass?list=${apilistname}&store=${store}&lang=${lang}`;
+      return `/api/gamepass?list=${apilistname}&store=${store}&lang=${lang}`;
     }
     return {
       gameLink,

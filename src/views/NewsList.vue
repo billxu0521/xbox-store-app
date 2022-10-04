@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>NewsList</ion-title>
+        <ion-title>Xbox 遊戲查詢網 新聞列表</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -36,7 +36,7 @@
 import { IonThumbnail,IonImg,IonCard,IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import axios from 'axios';
 import { reactive,onMounted } from 'vue';
-const url = 'http://52.191.89.252:3031/api/news' ;
+const url = 'http://localhost:3031/api/news' ;
 export default  {
   name: 'NewsList',
   components: {IonThumbnail, IonImg,IonCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
