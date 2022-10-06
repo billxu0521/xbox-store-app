@@ -55,12 +55,12 @@
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonGrid,IonRow,IonText,IonCol,IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import GamePassSimpleListCard  from '@/components/GamePassSimpleListCard.vue';
 
 export default  {
   name: 'GamePassList',
-  components: { GamePassSimpleListCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   setup() {
     const store = 'TW'; 
     const lang = 'zh-TW';

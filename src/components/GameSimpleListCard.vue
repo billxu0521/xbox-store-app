@@ -49,7 +49,7 @@
           </ion-text > 
         </div>
         <div v-else>
-          <div v-if="item.price.amount == '0'">
+          <div v-if="item.price.amount == '0'"  class="game-card-free">
             免費
           </div>
           <div v-else>
@@ -68,7 +68,7 @@
 </template>
 
 <script >
-import { IonSkeletonText,IonThumbnail} from '@ionic/vue';
+import { IonText,IonSkeletonText,IonThumbnail} from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { inject } from 'vue'
@@ -85,8 +85,12 @@ import { Pagination, Navigation, Virtual } from 'swiper';
 
 export default defineComponent({
   name: 'GameSimpleListCard',
-  components: { IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
-  props: ['url'],
+  components: { IonText,IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
+  props: {
+    'url':{
+      type: String,
+    }
+  },
   
   setup(props) {
     const axios = inject('axios') 
@@ -137,8 +141,6 @@ export default defineComponent({
       swiperRef.slideTo(swiperRef.activeIndex + 2, 0);
     };
    
-    console.log(props.url)
-    //等基本DOM渲染後再讀資料
     //等基本DOM渲染後再讀資料
     onMounted(() => {
         axios.get(props.url)

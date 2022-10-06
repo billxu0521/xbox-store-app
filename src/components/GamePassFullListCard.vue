@@ -70,7 +70,9 @@
 import { 
   IonContent, 
   IonBackButton,
-  IonPage 
+  IonPage,
+  IonText,
+  IonCol
 } from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
 import { inject } from 'vue'
@@ -81,9 +83,12 @@ export default defineComponent({
   components: { 
     IonContent, 
     IonBackButton,
-    IonPage
+    IonPage,
+    IonText,
+    IonCol
    },
   setup() {
+    console.log('new')
     const axios = inject('axios') 
     const route = useRoute();
     const { page } = route.params;

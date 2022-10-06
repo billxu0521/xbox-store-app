@@ -1,12 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import TabsPage from '../views/TabsPage.vue';
-import GameDetailCard from '../components/GameDetailCard.vue';
-import GameFullListCard from '../components/GameFullListCard.vue';
-import GamePassFullListCard from '../components/GamePassFullListCard.vue';
-import GameList from '../views/GameList.vue';
-import GamePassList from '../views/GamePassList.vue';
-import NewsList from '../views/NewsList.vue';
 
+import GameList from '../views/GameList.vue';
 
 const routes = [
   {
@@ -22,31 +17,36 @@ const routes = [
       {
         path: '/game/:id',
         name: 'GameDetail',
-        component: GameDetailCard,
+        component: () => import('@/components/GameDetailCard.vue'),
       },
       {
         path: '/newslist',
         name: 'NewsList',
-        component: NewsList,
+        component: () => import('@/views/NewsList.vue'),
       },
       {
         path: '/gamelist/:page',
         name: 'GameFullList',
-        component: GameFullListCard,
-      },
-      {
-        path: '/gamepass/',
-        name: 'GamePass',
-        component: GamePassList,
+        component: () => import('@/components/GameFullListCard.vue'),
       },
       {
         path: '/gamepass/:page',
         name: 'GamePassFullList',
-        component: GamePassFullListCard,
+        component: () => import('@/components/GamePassFullListCard.vue'),
       },
+      {
+        path: '/gamepass',
+        name: 'GamePass',
+        component: () => import('@/views/GamePassList.vue'),
+      },
+    
       
     ],
+    
   },
+ 
+  
+  
   
   
 ]
