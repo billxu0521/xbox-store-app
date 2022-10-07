@@ -1,5 +1,15 @@
 <template>
   <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>全部遊戲列表</ion-title>
+        <ion-buttons slot="start" @click="goBack()">
+          <ion-back-button >
+            <ion-icon ></ion-icon>
+        </ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
@@ -19,14 +29,14 @@
 
       <ion-grid v-if="!data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card ion-text-center" size="12" size-md v-for="(item) in data.gamelistdata"
+          <ion-col class="full-game game-card ion-text-center" size="3" v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-              <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
-              <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
-              <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">     
+              <img  v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
+              <img  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
+              <img  v-else v-lazy="{ src: item.images.brandedkeyart.url }">     
             </ion-thumbnail>
             <ion-subtitle >開發商:{{item.developer}}</ion-subtitle>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
@@ -42,6 +52,9 @@
               <div v-else>
                 <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
               </div>
+            </div>
+            <div>
+              <ion-text class="game-card-title">{{item.title}}</ion-text>
             </div>
           </ion-col>
           <ion-infinite-scroll
@@ -68,6 +81,7 @@ import {
   IonContent, 
   IonInfiniteScroll, 
   IonInfiniteScrollContent,
+  IonBackButton,
   IonPage ,
 } from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
@@ -81,6 +95,7 @@ export default defineComponent({
     IonContent, 
     IonInfiniteScroll, 
     IonInfiniteScrollContent,
+    IonBackButton,
     IonPage
    },
   setup() {

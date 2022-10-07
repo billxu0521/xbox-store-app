@@ -1,5 +1,15 @@
 <template>
   <ion-page>
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Game Pass全部遊戲列表</ion-title>
+        <ion-buttons slot="start"  @click="goBack()">
+          <ion-back-button >
+            <ion-icon ></ion-icon>
+        </ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
@@ -20,12 +30,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-
-    
       <ion-grid v-if="!data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card ion-text-center" size="12" size-md v-for="(item) in data.gamelistdata"
+          <ion-col class="full-game game-card ion-text-center" size="3"  v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
@@ -50,6 +57,9 @@
                 <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
               </div>
             </div>
+            <div>
+              <ion-text class="game-card-title">{{item.title}}</ion-text>
+            </div>    
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -60,6 +70,7 @@
 <script>
 import { 
   IonContent, 
+  IonBackButton,
   IonPage,
   IonText,
   IonCol
@@ -72,6 +83,7 @@ export default defineComponent({
   name: 'GamePassFullListCard',
   components: { 
     IonContent, 
+    IonBackButton,
     IonPage,
     IonText,
     IonCol
