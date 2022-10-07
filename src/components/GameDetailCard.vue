@@ -12,16 +12,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" class="game-detail-card-content">
-      <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url}); `"></div>
-      <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url}); `"></div>
-      <div v-else class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart.url}); `"></div>
+      <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url} + ${imageQuality}); `"></div>
+      <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url} + ${imageQuality}); `"></div>
+      <div v-else class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart.url} + ${imageQuality}); `"></div>
       <ion-grid>
         <ion-row>
           <ion-col>
           <ion-thumbnail class="game-detail-card-thumbnail">
-            <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
-            <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
-            <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">  
+            <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality} ">
+            <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url} + imageQuality"> 
+            <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">  
           </ion-thumbnail>
         </ion-col>
         </ion-row>
@@ -79,7 +79,7 @@
           >
             <swiper-slide v-for="(image) in item.images.screenshot"
               :key="image">
-                <img class="game-slide-image" v-lazy="{ src: image.url }"/>
+                <img class="game-slide-image" v-lazy="{ src: image.url + imageQuality}"/>
             </swiper-slide>
           </swiper>              
           </ion-col>
@@ -109,7 +109,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { Pagination, Navigation } from 'swiper';
-
 import axios from 'axios';
 
 const store = 'TW'; 
@@ -120,7 +119,7 @@ export default defineComponent({
   components: { IonThumbnail,Swiper,SwiperSlide,IonChip,IonToolbar,IonHeader,IonBackButton,IonButtons,IonContent,IonPage },
   setup() {
     const router = useRouter();
-    console.log(router)
+    const imageQuality = '?w=800&q=50'
     const route = useRoute();
     const { id } = route.params;
     console.log(route);
@@ -160,6 +159,7 @@ export default defineComponent({
       id,
       router,
       swiperOptions,
+      imageQuality,
       modules: [Pagination, Navigation],
       };
     },

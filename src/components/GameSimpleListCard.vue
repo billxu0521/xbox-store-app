@@ -38,8 +38,8 @@
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
           {{boxart }}
-          <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
-          <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
+          <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality }">
+          <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
           <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
         </ion-thumbnail>
         <div v-if="typeof(item.price.deal)!== 'undefined'">
@@ -81,8 +81,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/virtual';
 
 import { Pagination, Navigation, Virtual } from 'swiper';
-
-
 export default defineComponent({
   name: 'GameSimpleListCard',
   components: { IonText,IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
@@ -94,7 +92,7 @@ export default defineComponent({
   
   setup(props) {
     const axios = inject('axios') 
-
+    const imageQuality = '?w=800&q=50'
     const data = reactive({
         gamelistdata:[],
         loaded:true,
@@ -158,6 +156,7 @@ export default defineComponent({
       appendNumber,
       prependNumber,
       swiperOptions,
+      imageQuality,
       setSwiperRef,
       slideTo,
       append,

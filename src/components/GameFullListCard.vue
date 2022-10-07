@@ -34,9 +34,9 @@
             <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-              <img  v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
-              <img  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
-              <img  v-else v-lazy="{ src: item.images.brandedkeyart.url }">     
+              <img  v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality}">
+              <img  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
+              <img  v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality + imageQuality}">     
             </ion-thumbnail>
             <ion-subtitle >開發商:{{item.developer}}</ion-subtitle>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
@@ -99,7 +99,8 @@ export default defineComponent({
     IonPage
    },
   setup() {
-    const axios = inject('axios') 
+    const axios = inject('axios') ;
+    const imageQuality = '?w=800&q=50'
     const route = useRoute();
     const { page } = route.params;
     
@@ -151,9 +152,9 @@ export default defineComponent({
     return {
       data,
       isDisabled,
+      imageQuality,
       toggleInfiniteScroll,
       loadData,
-   
       };
     },
     methods: {
