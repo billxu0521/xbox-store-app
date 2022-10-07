@@ -14,10 +14,8 @@
             <ion-skeleton-text style="height: 30vh;" :animated="true"></ion-skeleton-text>
           </ion-thumbnail>
           <div>
-          <ion-text >
             <ion-skeleton-text :animated="true" style="width: 100%;"></ion-skeleton-text>
-          </ion-text >
-            <ion-skeleton-text :animated="true" style="width: 30%;"></ion-skeleton-text>
+          
           </div>
       </div>
     </swiper-slide>
@@ -39,8 +37,10 @@
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-          <img class="game-box-image" v-if="typeof(item.images.boxart.url)!== 'undefined'" v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }">
-          <img class="game-box-image" v-else v-lazy="{ src: item.images.boxart[1].url, loading: defaultimage, error: defaultimage }">     
+          {{boxart }}
+          <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
+          <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
+          <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
         </ion-thumbnail>
         <div v-if="typeof(item.price.deal)!== 'undefined'">
           <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
@@ -94,7 +94,7 @@ export default defineComponent({
   
   setup(props) {
     const axios = inject('axios') 
-    const defaultimage = 'assets/imgs/default-image.png';
+
     const data = reactive({
         gamelistdata:[],
         loaded:true,
@@ -153,7 +153,6 @@ export default defineComponent({
     
     return {
       data,
-      defaultimage,
       slides,
       swiperRef: null,
       appendNumber,

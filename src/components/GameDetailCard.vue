@@ -12,12 +12,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" class="game-detail-card-content">
+      <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url}); `"></div>
+      <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url}); `"></div>
+      <div v-else class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart.url}); `"></div>
       <ion-grid>
         <ion-row>
           <ion-col>
           <ion-thumbnail class="game-detail-card-thumbnail">
-            <img v-if="typeof(item.images.boxart.url)!== 'undefined'" v-lazy="{ src: item.images.boxart.url, loading: defaultimage, error: defaultimage }"/>
-            <img v-else-if="typeof(item.images.titledheroart.url)!== 'undefined'" v-lazy="{ src: item.images.titledheroart.url, loading: defaultimage, error: defaultimage }"/>
+            <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url }">
+            <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url }"> 
+            <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">  
           </ion-thumbnail>
         </ion-col>
         </ion-row>
@@ -28,7 +32,7 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center">
-            <ion-text color="medium">
+            <ion-text class="game-card-developer" >
               <div>開發商：<span>{{item.developer}}</span></div>
               <div>發行商：<span>{{item.publisher}}</span></div>
             </ion-text>
@@ -50,7 +54,7 @@
               </div>
               <div>
                 <ion-text>
-                只到{{item.price.ends}}
+                只到{{setTimeStamp(item.price.ends)}}
                 </ion-text>
               </div>
             </div>
@@ -67,8 +71,7 @@
         <ion-row>
           <ion-col>
             <swiper
-            :slidesPerView="4"
-            :spaceBetween="30"
+            :breakpoints="swiperOptions.breakpoints"
             :loop="true"
             :navigation="true"
             :modules="modules"
@@ -76,7 +79,7 @@
           >
             <swiper-slide v-for="(image) in item.images.screenshot"
               :key="image">
-                <img v-lazy="{ src: image.url, loading: defaultimage, error: defaultimage }"/>
+                <img class="game-slide-image" v-lazy="{ src: image.url }"/>
             </swiper-slide>
           </swiper>              
           </ion-col>
@@ -121,11 +124,27 @@ export default defineComponent({
     const route = useRoute();
     const { id } = route.params;
     console.log(route);
-    const defaultimage = 'assets/imgs/xbox-logo.png';
     const data = reactive({
         gamedetaildata:''
     });
-
+    let swiperOptions = {
+      breakpoints: {       
+        320: {       
+          slidesPerView: 1,
+          spaceBetween: 10     
+        },          
+        770: {       
+          slidesPerView: 3,       
+          spaceBetween: 50     
+        },   
+    
+        771: {       
+          slidesPerView: 4,       
+          spaceBetween: 30     
+        } 
+      }  
+    };
+    
     //等基本DOM渲染後再讀資料
     onMounted(() => {
         const url = `/api/games?id=${id}&store=${store}&lang=${lang}`;
@@ -140,13 +159,20 @@ export default defineComponent({
       data,
       id,
       router,
-      defaultimage,
+      swiperOptions,
       modules: [Pagination, Navigation],
       };
     },
   methods: {
     goBack(){
       this.$router.go(-1);
+    },
+    setTimeStamp(time){
+      let timecover = new Date(time);
+      let year = timecover.getFullYear();
+      let date = timecover.getDate();
+      let month = timecover.getMonth();
+      return `${year} / ${month+1} / ${date}`
     }
   },
  

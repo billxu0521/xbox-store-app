@@ -58,6 +58,20 @@ ion-back-button {
   color: #FFFFFF;
 }
 
+.game-detail-card-backgroud{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  opacity: .4;
+  }
+
+
+  .
 /*
 game-list-card
 */
@@ -136,19 +150,21 @@ game-list-card
   color: #AE0000;
 }
 
+.game-box-image{
+  background: #4F4F4F;
+  background-image: url('assets/imgs/xbox-logo.png') ;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 /*
 game-detail-card
 */
 
-.game-detail-card-img img{
-  max-height: 60vh;
-}
 
 .game-detail-card-img .swiper-slide{
   max-height: 40vh;
-  background-color: gray;
-
 }
 
 .game-detail-card-title{
@@ -200,6 +216,13 @@ game-detail-card
 .game-detail-card-price{
   color: #019858;
   font-size: 2em;
+}
+
+.game-slide-image{
+  background: #4F4F4F;
+  background-image: url('assets/imgs/xbox-logo.png') ;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width:768px) {
