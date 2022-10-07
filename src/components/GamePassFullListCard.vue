@@ -13,7 +13,7 @@
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card ion-text-center" size="12" size-md v-for="(item) in 12"
+          <ion-col class="full-game game-card ion-text-center" size="12" size-xs="12" size-sm="6" size-md="4" size-lg="3" v-for="(item) in 12"
             :key="item">
             <ion-thumbnail class="game-box-thumbnail" >
               <ion-skeleton-text style="height: 40vh;" :animated="true"></ion-skeleton-text>
@@ -32,7 +32,7 @@
       </ion-grid>
       <ion-grid v-if="!data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card ion-text-center" size="3"  v-for="(item) in data.gamelistdata"
+          <ion-col class="full-game game-card ion-text-center" size="12" size-xs="12" size-sm="6" size-md="4" size-lg="3"  v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
