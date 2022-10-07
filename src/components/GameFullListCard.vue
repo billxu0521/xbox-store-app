@@ -28,7 +28,7 @@
       </ion-grid>
 
       <ion-grid v-if="!data.loaded">
-        <ion-row class="ion-justify-content-between">
+        <ion-row>
           <ion-col class="full-game game-card ion-text-center" size="12" size-xs="12" size-sm="6" size-md="4" size-lg="3" v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
@@ -122,9 +122,7 @@ export default defineComponent({
       url = `/api/games?list=${page}&skipitems=${skipitems}&store=${store}&lang=${lang}&count=${count}`;  
       axios.get(url)
         .then((res)=>{
-            console.log(res.data);
             (res.data).forEach(element => {
-              console.log(element);
               data.gamelistdata.push(element)
               data.loaded = false
             });

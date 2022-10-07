@@ -25,13 +25,12 @@
               <p>
                 <ion-skeleton-text :animated="true" style="width: 30%;"></ion-skeleton-text>
               </p>        
-              
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
       <ion-grid v-if="!data.loaded">
-        <ion-row class="ion-justify-content-between">
+        <ion-row>
           <ion-col class="full-game game-card ion-text-center" size="12" size-xs="12" size-sm="6" size-md="4" size-lg="3"  v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
@@ -89,14 +88,12 @@ export default defineComponent({
     IonCol
    },
   setup() {
-    console.log('new')
     const axios = inject('axios') ;
     const route = useRoute();
     const imageQuality = '?w=800&q=50'
     const { page } = route.params;
     const store = 'TW'; 
     const lang = 'zh-TW';
-    
     const defaultimage = 'assets/imgs/default-image.png';
     let url = '';
     let data = reactive({
@@ -113,7 +110,6 @@ export default defineComponent({
       url = `/api/gamepass?list=${page}&store=${store}&lang=${lang}`; 
       axios.get(url)
           .then((res)=>{
-              console.log(res.data)
               data.gamelistdata = res.data
               data.loaded = false
         })
