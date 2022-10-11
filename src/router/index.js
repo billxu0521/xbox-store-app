@@ -27,12 +27,12 @@ const routes = [
       {
         path: '/gamelist/:page',
         name: 'GameFullList',
-        component: () => import('@/components/GameFullListCard.vue'),
+        component: () => import('@/views/GameFullListLayout.vue'),
       },
       {
         path: '/gamepass/:page',
         name: 'GamePassFullList',
-        component: () => import('@/components/GamePassFullListCard.vue'),
+        component: () => import('@/views/GamePassFullListLayout.vue'),
       },
       {
         path: '/gamepass',

@@ -119,7 +119,7 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const imageQuality = '?w=800&q=50';
-    const screenQuality = '?w=800&q=30';
+    const screenQuality = '?w=500&q=30';
     const route = useRoute();
     const { id } = route.params;
     const data = reactive({

@@ -37,6 +37,9 @@
     IonContent,
     IonLabel,
     IonPage,
+    IonTitle,
+    IonToolbar,
+    IonHeader,
     IonRouterOutlet,
   } from '@ionic/vue';
   import { ellipse, square, triangle } from 'ionicons/icons';
@@ -48,7 +51,10 @@
       IonContent,
       IonLabel,
       IonTabs,
+      IonTitle,
       IonTabBar,
+      IonToolbar,
+      IonHeader,
       IonTabButton,
       IonPage,
       IonRouterOutlet,

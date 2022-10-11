@@ -1,15 +1,4 @@
 <template>
-  <ion-page>
-    <ion-header translucent>
-      <ion-toolbar>
-        <ion-title>Game Pass全部遊戲列表</ion-title>
-        <ion-buttons slot="start"  @click="goBack()">
-          <ion-back-button >
-            <ion-icon ></ion-icon>
-        </ion-back-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
@@ -41,7 +30,7 @@
               <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
               <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">    
             </ion-thumbnail>
-            <ion-subtitle>開發商:{{item.developer}}</ion-subtitle>
+            <div>開發商:{{item.developer}}</div>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
               <ion-text class="game-card-sales-price">
                 <s>NT${{item.price.amount}}</s>
@@ -63,16 +52,17 @@
         </ion-row>
       </ion-grid>
     </ion-content>
-  </ion-page>
 </template>
 
 <script>
 import { 
   IonContent, 
-  IonBackButton,
-  IonPage,
   IonText,
-  IonCol
+  IonCol,
+  IonSkeletonText,
+  IonThumbnail,
+  IonRow,
+  IonGrid,
 } from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
 import { inject } from 'vue'
@@ -82,10 +72,12 @@ export default defineComponent({
   name: 'GamePassFullListCard',
   components: { 
     IonContent, 
-    IonBackButton,
-    IonPage,
     IonText,
-    IonCol
+    IonCol,
+    IonSkeletonText,
+    IonThumbnail,
+    IonRow,
+    IonGrid,
    },
   setup() {
     const axios = inject('axios') ;

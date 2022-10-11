@@ -37,7 +37,6 @@
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-          {{boxart }}
           <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality }">
           <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
           <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
@@ -143,6 +142,7 @@ export default defineComponent({
     onMounted(() => {
         axios.get(props.url)
           .then((res)=>{
+              console.log(res.data)
               data.gamelistdata = res.data
               data.loaded = false
         })

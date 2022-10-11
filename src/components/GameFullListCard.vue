@@ -1,15 +1,4 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>全部遊戲列表</ion-title>
-        <ion-buttons slot="start" @click="goBack()">
-          <ion-back-button >
-            <ion-icon ></ion-icon>
-        </ion-back-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
@@ -72,7 +61,6 @@
         </ion-row>
       </ion-grid>
     </ion-content>
-  </ion-page>
 </template>
 
 <script>
@@ -81,8 +69,6 @@ import {
   IonContent, 
   IonInfiniteScroll, 
   IonInfiniteScrollContent,
-  IonBackButton,
-  IonPage ,
 } from '@ionic/vue';
 import { ref,reactive,onMounted,defineComponent } from 'vue';
 import { inject } from 'vue'
@@ -95,14 +81,13 @@ export default defineComponent({
     IonContent, 
     IonInfiniteScroll, 
     IonInfiniteScrollContent,
-    IonBackButton,
-    IonPage
    },
   setup() {
     const axios = inject('axios') ;
     const imageQuality = '?w=800&q=50'
     const route = useRoute();
     const { page } = route.params;
+    console.log(page)
     
     let skipitems = 0;  
     const store = 'TW'; 

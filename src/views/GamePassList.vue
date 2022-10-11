@@ -1,11 +1,6 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">GameList</ion-title>
-        </ion-toolbar>
-      </ion-header>
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -50,12 +45,12 @@
 </template>
 
 <script>
-import { IonGrid,IonRow,IonText,IonCol,IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonGrid,IonRow,IonText,IonCol,IonPage, IonContent } from '@ionic/vue';
 import GamePassSimpleListCard  from '@/components/GamePassSimpleListCard.vue';
 
 export default  {
   name: 'GamePassList',
-  components: { IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard, IonContent, IonPage },
   setup() {
     const store = 'TW'; 
     const lang = 'zh-TW';
