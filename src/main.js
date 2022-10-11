@@ -5,6 +5,7 @@ import { IonicVue } from '@ionic/vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue3-lazyload'
+import VueGtag from "vue-gtag";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -26,12 +27,13 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 import './theme/custom.css';
 
-
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(VueGtag, {
+    config: { id: "G-FRRV9RY9WE" }
+  })
   .use(VueLazyLoad,{
-    
   });
 
 app.use(VueAxios, axios)
