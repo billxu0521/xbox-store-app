@@ -46,7 +46,7 @@ const app = createApp(App)
       }
     },
     onReady () {
-      // ready
+      console.log('GA')
     }
   },router)
   .use(VueLazyLoad,{
