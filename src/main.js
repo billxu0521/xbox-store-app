@@ -31,12 +31,22 @@ const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(VueGtag, {
+    appName: 'Xbox',
+    pageTrackerScreenviewEnabled: true,
     config: { 
       id: "G-FRRV9RY9WE" ,
       params: {
         anonymize_ip: true,
       },
-      debug: false 
+    },
+    pageTrackerTemplate(to) {
+      return {
+        page_title: 'index page',
+        page_path: to.path
+      }
+    },
+    onReady () {
+      // ready
     }
   },router)
   .use(VueLazyLoad,{
