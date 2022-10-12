@@ -80,11 +80,11 @@ export default defineComponent({
     const store = 'TW'; 
     const lang = 'zh-TW';
     const login = () => {
-      event('login', { method: 'Google' })
+      event('pageview:gamelist', { method: 'Google' })
       pageview({ page_path: '/gamelist' })
       
       pageview('/gamelist')
-      
+      console.log('pageview:gamelist')
     }
     
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
