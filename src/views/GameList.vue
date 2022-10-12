@@ -66,6 +66,7 @@
 import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
 import { defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
+import { event } from 'vue-gtag'
 
 export default defineComponent({
   name: 'GameList',
@@ -78,6 +79,9 @@ export default defineComponent({
     const skipitems = 0;
     const store = 'TW'; 
     const lang = 'zh-TW';
+    const login = () => {
+      event('login', { method: 'Google' })
+    }
     
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     let gameLink = function(apilistname) {
@@ -89,6 +93,7 @@ export default defineComponent({
     return {
       gameLink,
       logoimage,
+      login
     };
   },
   
@@ -96,6 +101,13 @@ export default defineComponent({
     gamePassPageLink(page) {
       console.log('1');
       window.location.href =  'gamepass/' + page;
+    },
+    track () {
+      this.$gtag.pageview({ page_path: '/gamelist' })
+      
+      this.$gtag.pageview('/gamelist')
+      
+      this.$gtag.pageview(this.$route)
     }
   },
 })

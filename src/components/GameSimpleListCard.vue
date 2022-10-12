@@ -142,7 +142,6 @@ export default defineComponent({
     onMounted(() => {
         axios.get(props.url)
           .then((res)=>{
-              console.log(res.data)
               data.gamelistdata = res.data
               data.loaded = false
         })

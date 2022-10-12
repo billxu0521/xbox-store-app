@@ -31,8 +31,14 @@ const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(VueGtag, {
-    config: { id: "G-FRRV9RY9WE" }
-  })
+    config: { 
+      id: "G-FRRV9RY9WE" ,
+      params: {
+        anonymize_ip: true,
+      },
+      debug: false 
+    }
+  },router)
   .use(VueLazyLoad,{
   });
 
