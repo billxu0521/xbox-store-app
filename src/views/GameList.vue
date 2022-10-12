@@ -64,9 +64,9 @@
 
 <script>
 import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
-import { defineComponent} from 'vue';
+import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
-import { event } from 'vue-gtag'
+import { pageview,event } from 'vue-gtag'
 
 export default defineComponent({
   name: 'GameList',
@@ -81,6 +81,10 @@ export default defineComponent({
     const lang = 'zh-TW';
     const login = () => {
       event('login', { method: 'Google' })
+      pageview({ page_path: '/gamelist' })
+      
+      pageview('/gamelist')
+      
     }
     
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
@@ -89,7 +93,10 @@ export default defineComponent({
       
       return `/api/games?list=${apilistname}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     }
-
+     //等基本DOM渲染後再讀資料
+     onMounted(() => {
+      login();
+    });
     return {
       gameLink,
       logoimage,
