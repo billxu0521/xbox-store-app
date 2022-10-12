@@ -1,16 +1,6 @@
 <template>
   <ion-page v-for="(item) in data.gamedetaildata"
       :key="item.title">
-    <ion-header translucent>
-      <ion-toolbar>
-        <ion-title>「{{item.title}}」遊戲資訊</ion-title>
-        <ion-buttons slot="start" @click="goBack()">
-          <ion-back-button >
-            <ion-icon ></ion-icon>
-        </ion-back-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
     <ion-content :fullscreen="true" class="game-detail-card-content">
       <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url + imageQuality} ); `"></div>
       <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url + imageQuality}); `"></div>
@@ -96,13 +86,13 @@
 </template>
 
 <script >
-import { IonThumbnail,IonChip,IonToolbar,IonHeader,IonBackButton,IonButtons,IonContent,IonPage} from '@ionic/vue';
+import { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,IonChip,IonContent,IonPage} from '@ionic/vue';
 import { reactive,onMounted,defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
- // Import Swiper styles
- import 'swiper/css';
+// Import Swiper styles
+import 'swiper/css';
 
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -115,8 +105,9 @@ const lang = 'zh-TW';
 
 export default defineComponent({
   name: 'GameDetailCard',
-  components: { IonThumbnail,Swiper,SwiperSlide,IonChip,IonToolbar,IonHeader,IonBackButton,IonButtons,IonContent,IonPage },
-  setup() {
+  components: { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,Swiper,SwiperSlide,IonChip,IonContent,IonPage },
+  emits: ["getGameitle"], // <--- add this line
+  setup(_,{ emit }) {
     const router = useRouter();
     const imageQuality = '?w=800&q=50';
     const screenQuality = '?w=500&q=30';
@@ -142,6 +133,9 @@ export default defineComponent({
         } 
       }  
     };
+    const handleChange = (value) => {
+      emit("getGameitle",value)
+    }
     
     //等基本DOM渲染後再讀資料
     onMounted(() => {
@@ -149,6 +143,7 @@ export default defineComponent({
         axios.get(url)
           .then((res)=>{
               data.gamedetaildata = res.data
+              handleChange(data.gamedetaildata[0].title)
         })
       });
     

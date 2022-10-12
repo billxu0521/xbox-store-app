@@ -17,7 +17,7 @@ const routes = [
       {
         path: '/game/:id',
         name: 'GameDetail',
-        component: () => import('@/components/GameDetailCard.vue'),
+        component: () => import('@/views/GameDetailLayout.vue'),
       },
       {
         path: '/newslist',
