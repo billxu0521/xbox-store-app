@@ -66,7 +66,7 @@
 import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
 import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
-import { pageview } from 'vue-gtag'
+import { pageview,event } from 'vue-gtag'
 
 export default defineComponent({
   name: 'GameList',
@@ -92,6 +92,7 @@ export default defineComponent({
      //等基本DOM渲染後再讀資料
      onMounted(() => {
       login();
+      event('login', { method: 'Google' })
     });
     return {
       gameLink,

@@ -32,12 +32,10 @@ const app = createApp(App)
   .use(router)
   .use(VueGtag, {
     appName: 'Xbox',
+    enabled: true,
     pageTrackerScreenviewEnabled: true,
     config: { 
       id: "G-FRRV9RY9WE" ,
-      params: {
-        anonymize_ip: true,
-      },
     },
     pageTrackerTemplate(to) {
       return {
@@ -46,7 +44,7 @@ const app = createApp(App)
       }
     },
     onReady () {
-      console.log('GA')
+      console.log('GA ready')
     }
   },router)
   .use(VueLazyLoad,{
