@@ -15,7 +15,6 @@
           </ion-thumbnail>
           <div>
             <ion-skeleton-text :animated="true" style="width: 100%;"></ion-skeleton-text>
-          
           </div>
       </div>
     </swiper-slide>
@@ -37,8 +36,7 @@
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-          <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality }">
-          <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
+          <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
           <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
         </ion-thumbnail>
         <div v-if="typeof(item.price.deal)!== 'undefined'">
@@ -105,7 +103,7 @@ export default defineComponent({
     let swiperOptions = {
       breakpoints: {       
         320: {       
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 10     
         },          
         770: {       

@@ -26,8 +26,7 @@
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
               <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">Ea Play</span>
-              <img class="game-box-image" v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" v-lazy="{ src: item.images.boxart.url + imageQuality}">
-              <img class="game-box-image" v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" v-lazy="{ src: item.images.boxart[1].url + imageQuality}"> 
+              <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
               <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">    
             </ion-thumbnail>
             <div>開發商:{{item.developer}}</div>
