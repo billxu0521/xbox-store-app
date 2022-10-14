@@ -74,6 +74,10 @@ ion-back-button {
   height: 45vh;
 }
 
+.passcardswiper{
+  height: 45vh;
+}
+
   .
 /*
 game-list-card
@@ -83,6 +87,7 @@ game-list-card
   min-width: 20vw;
   max-width: 20vw;
 }
+
 .game-card-important-tag {
   border-radius: 5px;
 }
@@ -107,7 +112,7 @@ game-list-card
   height: 10%;
   text-align: center;
   font: bold;
-  font-size: 1em;
+  font-size: 1.2em;
   color: white;
   background-color: darkorange;
 }
@@ -242,19 +247,19 @@ game-detail-card
   
   .game-card-deals {
     color: #019858;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 500;
-    padding-left: 1em;
     text-shadow: 0em .1em 0.1em #BEBEBE;  
+  }
 
+  .game-card-free{
+    font-size: 1em;
   }
 
   .game-card-price-off {
     position: absolute;
     bottom: 0px;
     left: 0px;
-    width: 40%;
-    height: 10%;
     text-align: center;
     font: bold;
     color: white;
@@ -262,10 +267,17 @@ game-detail-card
   }
 
   .game-card-important-tag{
-    font-size: 0.8em;
+    font-size: 0.2em;
+  }
+  
+  .game-card-gamepass{
+    width: 55%;
   }
 
   .cardswiper{
     height: 40vh;
+  }
+  .passcardswiper{
+    height: 35vh;
   }
 }

@@ -32,15 +32,15 @@
       :loop="true"
       :loopFillGroupWithBlank="true"
       :breakpoints="swiperOptions.breakpoints"
-      class="cardswiper"
+      class="passcardswiper"
       @swiper="setSwiperRef">
     <swiper-slide v-for="(item) in data.gamelistdata"
         :key="item.title">
       <div class="game-card" @click="gameLink(item.id)">
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
-          <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">Game Pass</span>
-          <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">Ea Play</span>
+          <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
+          <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">EaPlay</span>
           <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
           <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">  
         </ion-thumbnail>
@@ -106,7 +106,7 @@ export default defineComponent({
     let swiperOptions = {
       breakpoints: {       
         320: {       
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 10     
         },          
         770: {       
