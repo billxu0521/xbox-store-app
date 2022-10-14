@@ -5,7 +5,6 @@ import { IonicVue } from '@ionic/vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue3-lazyload'
-import VueGtag from "vue-gtag";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -30,26 +29,7 @@ import './theme/custom.css';
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
-  .use(VueGtag, {
-    appName: 'Xbox',
-    enabled: true,
-    pageTrackerScreenviewEnabled: true,
-    config: { 
-      id: "GTM-KZT4HQF",
-      params: {
-        anonymize_ip: true
-      }
-    },
-    pageTrackerTemplate(to) {
-      return {
-        page_title: 'index page',
-        page_path: to.path
-      }
-    },
-    onReady () {
-      console.log('GA ready')
-    }
-  },router)
+  
   .use(VueLazyLoad,{
   });
 
