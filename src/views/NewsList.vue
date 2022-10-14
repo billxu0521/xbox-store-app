@@ -43,7 +43,6 @@ export default  {
     onMounted(() => {
         axios.get(url)
           .then((res)=>{
-              console.log(res.data)
               data.gamenewsdata = res.data
         })
       });

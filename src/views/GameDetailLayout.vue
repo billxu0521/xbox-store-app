@@ -44,8 +44,7 @@ export default defineComponent({
     const data = reactive({
         titile:''
     });
-    
-    
+
     //等基本DOM渲染後再讀資料
     onMounted(() => {
       

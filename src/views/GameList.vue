@@ -83,10 +83,8 @@ export default defineComponent({
       pageview('/gamelist')
     }
     
-    //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     let gameLink = function(apilistname) {
-      this.url = "/api"
-      
+      this.url = "/api"      
       return `/api/games?list=${apilistname}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
     }
      //等基本DOM渲染後再讀資料
@@ -103,7 +101,6 @@ export default defineComponent({
   
   methods: {
     gamePassPageLink(page) {
-      console.log('1');
       window.location.href =  'gamepass/' + page;
     },
     track () {

@@ -89,7 +89,11 @@ import { Pagination, Navigation, Virtual } from 'swiper';
 export default defineComponent({
   name: 'GameSimpleListCard',
   components: { IonText,IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
-  props: ['url'],
+  props: {
+    'url':{
+      type: String,
+    }
+  },
   setup(props) {
     const axios = inject('axios') 
     const imageQuality = '?w=800&q=50'

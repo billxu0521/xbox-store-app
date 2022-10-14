@@ -41,7 +41,6 @@ const app = createApp(App)
       }
     },
     onReady () {
-      console.log('GA ready')
     }
   })
   .use(VueLazyLoad,{

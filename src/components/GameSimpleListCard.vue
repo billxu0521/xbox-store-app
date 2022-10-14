@@ -86,7 +86,6 @@ export default defineComponent({
       type: String,
     }
   },
-  
   setup(props) {
     const axios = inject('axios') 
     const imageQuality = '?w=800&q=50'

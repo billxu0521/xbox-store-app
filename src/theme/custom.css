@@ -267,11 +267,12 @@ game-detail-card
   }
 
   .game-card-important-tag{
-    font-size: 0.2em;
+    
   }
   
   .game-card-gamepass{
     width: 55%;
+    font-size: 0.8em;
   }
 
   .cardswiper{
@@ -280,4 +281,5 @@ game-detail-card
   .passcardswiper{
     height: 35vh;
   }
+
 }

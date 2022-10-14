@@ -87,7 +87,6 @@ export default defineComponent({
     const imageQuality = '?w=800&q=50'
     const route = useRoute();
     const { page } = route.params;
-    console.log(page)
     
     let skipitems = 0;  
     const store = 'TW'; 
@@ -110,7 +109,6 @@ export default defineComponent({
             (res.data).forEach(element => {
               data.gamelistdata.push(element)
               data.loaded = false
-              console.log(element)
             });
       })
       skipitems = skipitems + 12;  
@@ -119,7 +117,6 @@ export default defineComponent({
     const loadData = (event) => {
       setTimeout(() => {
         pushData();
-        console.log('Loaded data');
         event.target.complete();
 
         if (skipitems === 2000) {
