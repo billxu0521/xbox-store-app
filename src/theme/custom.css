@@ -262,12 +262,9 @@ game-detail-card
     left: 0px;
     text-align: center;
     font: bold;
+    font-size: 0.8em;
     color: white;
     background-color: seagreen;
-  }
-
-  .game-card-important-tag{
-    
   }
   
   .game-card-gamepass{

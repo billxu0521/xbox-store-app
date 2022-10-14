@@ -1,88 +1,86 @@
 <template>
-  <ion-page v-for="(item) in data.gamedetaildata"
-      :key="item.title">
-    <ion-content :fullscreen="true" class="game-detail-card-content">
-      <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url + imageQuality} ); `"></div>
-      <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url + imageQuality}); `"></div>
-      <div v-else class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart.url + imageQuality}); `"></div>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-          <ion-thumbnail class="game-detail-card-thumbnail">
-            <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-            <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">  
-          </ion-thumbnail>
+  <ion-content v-for="(item) in data.gamedetaildata"
+    :key="item.title" :fullscreen="true" class="game-detail-card-content">
+    <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url + imageQuality} ); `"></div>
+    <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url + imageQuality}); `"></div>
+    <div v-else class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart.url + imageQuality}); `"></div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+        <ion-thumbnail class="game-detail-card-thumbnail">
+          <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+          <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">  
+        </ion-thumbnail>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center game-detail-card-title">
+          <ion-text>{{item.title}}</ion-text>
         </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="ion-text-center game-detail-card-title">
-            <ion-text>{{item.title}}</ion-text>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="ion-text-center">
-            <ion-text class="game-card-developer" >
-              <div>開發商：<span>{{item.developer}}</span></div>
-              <div>發行商：<span>{{item.publisher}}</span></div>
-            </ion-text>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="ion-text-center">
-            <ion-chip v-if="item.game_pass === true" class="game-detail-card-important-tag game-detail-card-gamepass">Game Pass</ion-chip>
-            <ion-chip v-if="item.ea_play === true" class="game-detail-card-important-tag game-detail-card-eaplay">Ea Play</ion-chip>
-            <div v-if="typeof(item.price.deal)!== 'undefined'">
-              <ion-chip class="game-card-important-tag game-detail-card-sale-off">{{item.price.off}}% off</ion-chip>
-              <div>
-                <ion-text class="game-detail-card-sale-price">
-                  <s>NT${{item.price.amount}}</s>
-                </ion-text>
-              </div>
-              <div>
-                <ion-text class="game-detail-card-deals">NT${{item.price.deal}}</ion-text>
-              </div>
-              <div>
-                <ion-text>
-                只到{{setTimeStamp(item.price.ends)}}
-                </ion-text>
-              </div>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-text class="game-card-developer" >
+            <div>開發商：<span>{{item.developer}}</span></div>
+            <div>發行商：<span>{{item.publisher}}</span></div>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-chip v-if="item.game_pass === true" class="game-detail-card-important-tag game-detail-card-gamepass">Game Pass</ion-chip>
+          <ion-chip v-if="item.ea_play === true" class="game-detail-card-important-tag game-detail-card-eaplay">Ea Play</ion-chip>
+          <div v-if="typeof(item.price.deal)!== 'undefined'">
+            <ion-chip class="game-card-important-tag game-detail-card-sale-off">{{item.price.off}}% off</ion-chip>
+            <div>
+              <ion-text class="game-detail-card-sale-price">
+                <s>NT${{item.price.amount}}</s>
+              </ion-text>
             </div>
-            <div v-else>
-              <ion-text class="game-detail-card-price">NT${{item.price.amount}}</ion-text>
+            <div>
+              <ion-text class="game-detail-card-deals">NT${{item.price.deal}}</ion-text>
             </div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-          <ion-col class="ion-text-center">
-            <ion-button :href="`https://www.xbox.com/zh-TW/games/store/a/${item.id}`" target="_blank">前往購買</ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <swiper
-            :breakpoints="swiperOptions.breakpoints"
-            :loop="true"
-            :navigation="true"
-            :modules="modules"
-            class="game-detail-card-img"
-          >
-            <swiper-slide v-for="(image) in item.images.screenshot"
-              :key="image">
-                <img class="game-slide-image" v-lazy="{ src: image.url + screenQuality}"/>
-            </swiper-slide>
-          </swiper>              
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="game-detail-card-description">
-            <ion-text >
-              {{item.description}}
-            </ion-text>   
-          </ion-col>
-        </ion-row>      
+            <div>
+              <ion-text>
+              只到{{setTimeStamp(item.price.ends)}}
+              </ion-text>
+            </div>
+          </div>
+          <div v-else>
+            <ion-text class="game-detail-card-price">NT${{item.price.amount}}</ion-text>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <ion-button :href="`https://www.xbox.com/zh-TW/games/store/a/${item.id}`" target="_blank">前往購買</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <swiper
+          :breakpoints="swiperOptions.breakpoints"
+          :loop="true"
+          :navigation="true"
+          :modules="modules"
+          class="game-detail-card-img"
+        >
+          <swiper-slide v-for="(image) in item.images.screenshot"
+            :key="image">
+              <img class="game-slide-image" v-lazy="{ src: image.url + screenQuality}"/>
+          </swiper-slide>
+        </swiper>              
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="game-detail-card-description">
+          <ion-text >
+            {{item.description}}
+          </ion-text>   
+        </ion-col>
+      </ion-row>      
      </ion-grid>
   </ion-content>
-</ion-page>
 </template>
 
 <script >
