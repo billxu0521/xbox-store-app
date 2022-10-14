@@ -36,6 +36,9 @@ const app = createApp(App)
     pageTrackerScreenviewEnabled: true,
     config: { 
       id: "G-FRRV9RY9WE" ,
+      params: {
+        anonymize_ip: true
+      }
     },
     pageTrackerTemplate(to) {
       return {
