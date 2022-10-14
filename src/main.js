@@ -35,7 +35,7 @@ const app = createApp(App)
     enabled: true,
     pageTrackerScreenviewEnabled: true,
     config: { 
-      id: "G-GQ1M78W7X6",
+      id: "GTM-KZT4HQF",
       params: {
         anonymize_ip: true
       }
