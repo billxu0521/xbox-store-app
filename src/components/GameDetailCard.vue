@@ -84,7 +84,7 @@
 </template>
 
 <script >
-import { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,IonChip,IonContent,IonPage} from '@ionic/vue';
+import { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,IonChip,IonContent} from '@ionic/vue';
 import { reactive,onMounted,defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -103,7 +103,7 @@ const lang = 'zh-TW';
 
 export default defineComponent({
   name: 'GameDetailCard',
-  components: { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,Swiper,SwiperSlide,IonChip,IonContent,IonPage },
+  components: { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,Swiper,SwiperSlide,IonChip,IonContent },
   emits: ["getGameitle"], // <--- add this line
   setup(_,{ emit }) {
     const router = useRouter();
