@@ -25,10 +25,12 @@ import {
   IonBackButton
 } from '@ionic/vue';
 import { reactive,onMounted,defineComponent} from 'vue';
-
 import GameDetailCard  from '@/components/GameDetailCard.vue';
+import { useMeta } from 'vue-meta'
 
 export default defineComponent({
+  
+
   name: 'GameDetailLayout',
   components: {
     IonIcon,
@@ -44,6 +46,19 @@ export default defineComponent({
     const data = reactive({
         titile:''
     });
+
+    useMeta({ 
+      title: '遊戲詳細資訊',
+      description : '遊戲資訊', 
+      og: {
+        type: 'type',
+        title: '遊戲詳細資訊',
+        description : '遊戲資訊', 
+        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
+        url : 'https://xboxstore.gameqb.net/',
+        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
+      }
+    })
 
     //等基本DOM渲染後再讀資料
     onMounted(() => {

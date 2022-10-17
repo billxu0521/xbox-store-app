@@ -36,8 +36,8 @@
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
-          <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-          <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
+          <img  :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+          <img  :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
         </ion-thumbnail>
         <div v-if="typeof(item.price.deal)!== 'undefined'">
           <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>

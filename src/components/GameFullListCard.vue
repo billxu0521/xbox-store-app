@@ -2,7 +2,7 @@
     <ion-content >
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="full-game game-card ion-text-center" size="12" size-xs="12" size-sm="6" size-md="4" size-lg="3" v-for="(item) in 12"
+          <ion-col class="full-game game-card ion-text-center" size="12" size-xs="6" size-sm="6" size-md="4" size-lg="3" v-for="(item) in 12"
             :key="item">
             <ion-thumbnail class="game-box-thumbnail" >
               <ion-skeleton-text style="height: 30vh;" :animated="true"></ion-skeleton-text>
@@ -23,8 +23,8 @@
             <ion-thumbnail class="game-box-thumbnail">
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
-              <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-              <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">     
+              <img :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+              <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">     
             </ion-thumbnail>
             <ion-subtitle >開發商:{{item.developer}}</ion-subtitle>
             <div v-if="typeof(item.price.deal)!== 'undefined'">

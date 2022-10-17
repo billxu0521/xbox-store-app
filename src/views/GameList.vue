@@ -67,6 +67,7 @@ import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ion
 import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
 import { pageview,event } from 'vue-gtag'
+import { useMeta } from 'vue-meta'
 
 export default defineComponent({
   name: 'GameList',
@@ -82,7 +83,19 @@ export default defineComponent({
     const login = () => {
       pageview('/gamelist')
     }
-    
+    useMeta({ 
+      title: '遊戲列表',
+      description : '顯示XBOX遊戲列表', 
+      og: {
+        type: 'type',
+        title: '遊戲列表',
+        description : '顯示XBOX遊戲列表', 
+        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
+        url : 'https://xboxstore.gameqb.net/',
+        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
+      }
+    })
+
     let gameLink = function(apilistname) {
       this.url = "/api"      
       return `/api/games?list=${apilistname}&skipitems=${skipitems}&store=${store}&lang=${lang}`;
@@ -95,7 +108,7 @@ export default defineComponent({
     return {
       gameLink,
       logoimage,
-      login
+      login,
     };
   },
   

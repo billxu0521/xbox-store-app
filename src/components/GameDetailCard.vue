@@ -8,8 +8,8 @@
       <ion-row>
         <ion-col>
         <ion-thumbnail class="game-detail-card-thumbnail">
-          <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-          <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">  
+          <img :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+          <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">  
         </ion-thumbnail>
       </ion-col>
       </ion-row>
@@ -67,7 +67,7 @@
         >
           <swiper-slide v-for="(image) in item.images.screenshot"
             :key="image">
-              <img class="game-slide-image" v-lazy="{ src: image.url + screenQuality}"/>
+              <img :alt="item.title" class="game-slide-image" v-lazy="{ src: image.url + screenQuality}"/>
           </swiper-slide>
         </swiper>              
         </ion-col>

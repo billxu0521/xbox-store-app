@@ -47,11 +47,25 @@
 <script>
 import { IonGrid,IonRow,IonText,IonCol,IonPage, IonContent } from '@ionic/vue';
 import GamePassSimpleListCard  from '@/components/GamePassSimpleListCard.vue';
+import { useMeta } from 'vue-meta'
 
 export default  {
   name: 'GamePassList',
   components: { IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard, IonContent, IonPage },
   setup() {
+    useMeta({ 
+      title: 'XboxPass遊戲列表',
+      description : '顯示XBOX GamePass遊戲列表', 
+      og: {
+        type: 'type',
+        title: 'XboxPass遊戲列表',
+        description : '顯示XBOX GamePass遊戲列表', 
+        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
+        url : 'https://xboxstore.gameqb.net/',
+        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
+      }
+    })
+
     const store = 'TW'; 
     const lang = 'zh-TW';
     //let url = `http://localhost:3000/api/games?list=${list}&skipitems=${skipitems}&store=${store}&lang=${lang}`;

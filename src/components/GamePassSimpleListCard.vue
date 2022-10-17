@@ -41,8 +41,8 @@
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
           <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">EaPlay</span>
-          <img class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-          <img class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">  
+          <img :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+          <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">  
         </ion-thumbnail>
         <div v-if="typeof(item.price.deal)!== 'undefined'">
           <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
@@ -51,9 +51,12 @@
           </ion-text >
           </div>
           <div v-else>
-            <div v-if="item.price.amount == '0'" class="game-card-free">
+            <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
               免費
             </div>
+            <div v-if="item.price.amount == '0' && item.sold_separately == false">
+                GamePass限定
+              </div>
             <div v-else>
               <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
             </div>
@@ -148,6 +151,7 @@ export default defineComponent({
           .then((res)=>{
               data.gamelistdata = res.data
               data.loaded = false
+             
         })
       });
     

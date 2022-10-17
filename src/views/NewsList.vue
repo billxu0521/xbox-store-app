@@ -31,14 +31,30 @@
 import { IonThumbnail,IonImg,IonCard,IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import axios from 'axios';
 import { reactive,onMounted } from 'vue';
-const url = 'api/news' ;
+import { useMeta } from 'vue-meta'
+
+
 export default  {
   name: 'NewsList',
   components: {IonThumbnail, IonImg,IonCard,IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   setup() {
+    useMeta({ 
+      title: '新聞列表',
+      description : '新聞列表', 
+      og: {
+        type: 'type',
+        title: '新聞列表',
+        description : '新聞列表', 
+        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
+        url : 'https://xboxstore.gameqb.net/',
+        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
+      }
+    })
+    const url = 'api/news' ;
     const data = reactive({
         gamenewsdata:'',
     })
+    
     //等基本DOM渲染後再讀資料
     onMounted(() => {
         axios.get(url)
