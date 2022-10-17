@@ -47,13 +47,26 @@
             </div>
           </div>
           <div v-else>
-            <ion-text class="game-detail-card-price">NT${{item.price.amount}}</ion-text>
+          <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
+            免費
           </div>
+          <div v-if="item.price.amount == '0' && item.sold_separately == false">
+              尚未發售
+            </div>
+          <div v-else>
+            <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
+          </div>
+        </div>
         </ion-col>
       </ion-row>
       <ion-row class="ion-align-items-center">
         <ion-col class="ion-text-center">
           <ion-button :href="`https://www.xbox.com/zh-TW/games/store/a/${item.id}`" target="_blank">前往購買</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-text >**遊戲實際售價請參閱官方網站或相關通路，本網站資訊僅供參考。**</ion-text>
         </ion-col>
       </ion-row>
       <ion-row>

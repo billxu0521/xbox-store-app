@@ -41,7 +41,7 @@
                 免費
               </div>
               <div v-if="item.price.amount == '0' && item.sold_separately == false">
-                GamePass限定
+                尚未發售
               </div>
               <div v-else>
                 <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>

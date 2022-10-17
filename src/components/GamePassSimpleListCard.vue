@@ -50,17 +50,17 @@
             <s>NT${{item.price.amount}}</s>
           </ion-text >
           </div>
-          <div v-else>
-            <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
-              免費
-            </div>
-            <div v-if="item.price.amount == '0' && item.sold_separately == false">
-                GamePass限定
-              </div>
-            <div v-else>
-              <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
-            </div>
+        <div v-else>
+          <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
+            免費
           </div>
+          <div v-if="item.price.amount == '0' && item.sold_separately == false">
+              尚未發售
+            </div>
+          <div v-else>
+            <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
+          </div>
+        </div>
         <div>
           <ion-text class="game-card-developer">開發商:{{item.developer}}</ion-text>
         </div>

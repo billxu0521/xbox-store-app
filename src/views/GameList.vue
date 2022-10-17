@@ -12,6 +12,11 @@
           </ion-col>
         </ion-row>
         <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-text >**遊戲實際售價請參閱官方網站或相關通路，本網站資訊僅供參考。**</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col class="card-xbox-game-pass-container ion-text-center">
             <ion-text class="card-title">Game Pass</ion-text>
             <ion-row class="card-xbox-container-row">
