@@ -34,14 +34,7 @@ export default defineComponent({
     useMeta({ 
       title: 'Xbox遊戲列表',
       description : '顯示XBOX Game遊戲列表', 
-      og: {
-        type: 'type',
-        title: 'Xbox遊戲列表',
-        description : '顯示XBOX Game遊戲列表', 
-        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
-        url : 'https://xboxstore.gameqb.net/',
-        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
-      }
+     
     })
   },
   methods: {

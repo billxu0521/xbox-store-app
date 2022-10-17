@@ -41,14 +41,7 @@ export default  {
     useMeta({ 
       title: '新聞列表',
       description : '新聞列表', 
-      og: {
-        type: 'type',
-        title: '新聞列表',
-        description : '新聞列表', 
-        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
-        url : 'https://xboxstore.gameqb.net/',
-        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
-      }
+     
     })
     const url = 'api/news' ;
     const data = reactive({

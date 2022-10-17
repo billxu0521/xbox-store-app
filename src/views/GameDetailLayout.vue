@@ -50,14 +50,7 @@ export default defineComponent({
     useMeta({ 
       title: '遊戲詳細資訊',
       description : '遊戲資訊', 
-      og: {
-        type: 'type',
-        title: '遊戲詳細資訊',
-        description : '遊戲資訊', 
-        image : 'https://xboxstore.gameqb.net/assets/screenshot.png',
-        url : 'https://xboxstore.gameqb.net/',
-        site_name : 'XBOX Game Pass 遊戲資訊網 | Xbox Game Pass Games List'
-      }
+
     })
 
     //等基本DOM渲染後再讀資料
