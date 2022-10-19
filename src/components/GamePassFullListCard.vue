@@ -102,6 +102,7 @@ export default defineComponent({
     //等基本DOM渲染後再讀資料
     onMounted(() => {
       url = `/api/gamepass?list=${page}&store=${store}&lang=${lang}`; 
+      console.log(url) 
       axios.get(url)
           .then((res)=>{
               data.gamelistdata = res.data

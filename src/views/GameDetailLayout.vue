@@ -29,8 +29,6 @@ import GameDetailCard  from '@/components/GameDetailCard.vue';
 import { useMeta } from 'vue-meta'
 
 export default defineComponent({
-  
-
   name: 'GameDetailLayout',
   components: {
     IonIcon,

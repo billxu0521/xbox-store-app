@@ -106,12 +106,14 @@ export default defineComponent({
       isDisabled.value = !isDisabled.value;
     }
     let pushData = () => {
-      url = `/api/games?list=${page}&skipitems=${skipitems}&store=${store}&lang=${lang}&count=${count}`;  
+      url = `/api/games?list=${page}&skipitems=${skipitems}&store=${store}&lang=${lang}&count=${count}`;
+      console.log(url) 
       axios.get(url)
         .then((res)=>{
             (res.data).forEach(element => {
               data.gamelistdata.push(element)
               data.loaded = false
+              console.log(data.gamelistdata)
             });
       })
       skipitems = skipitems + 12;  
