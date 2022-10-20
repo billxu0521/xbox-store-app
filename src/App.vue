@@ -23,7 +23,7 @@ export default defineComponent({
   setup () {
     useMeta({
       title: '',
-      htmlAttrs: { lang: 'zh-tw', amp: false }
+      htmlAttrs: { lang: 'zh-TW', amp: false }
     })
   }
 });
