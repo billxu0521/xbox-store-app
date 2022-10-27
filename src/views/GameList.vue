@@ -4,6 +4,13 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+            <ion-row>            
+            </ion-row>
+            <game-top-list-card v-bind:url="gameLink('deals')"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-row>
               <ion-text class="card-title">特價遊戲</ion-text>
               <ion-button fill="outline" size="small" color="medium" href="gamelist/deals">更多</ion-button>
@@ -71,12 +78,13 @@
 import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
 import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
+import GameTopListCard  from '@/components/GameTopListCard.vue';
 import { pageview,event } from 'vue-gtag'
 import { useMeta } from 'vue-meta'
 
 export default defineComponent({
   name: 'GameList',
-  components: { IonGrid,IonCol,IonRow,IonText,IonButton,GameSimpleListCard, IonContent, IonPage },
+  components: { IonGrid,IonCol,IonRow,IonText,IonButton, IonContent, IonPage ,GameSimpleListCard,GameTopListCard},
   props: {
     timeout: { type: Number, default: 1000 },
   },

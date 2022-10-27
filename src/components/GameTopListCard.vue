@@ -32,36 +32,42 @@
       @swiper="setSwiperRef">
     <swiper-slide v-for="(item) in data.gamelistdata"
         :key="item.title">
-      <div class="game-card" @click="gameLink(item.id)">
-        <ion-thumbnail class="game-box-thumbnail">
-          <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
-          <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
-          <img  :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-          <img  :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
-        </ion-thumbnail>
-        <div v-if="typeof(item.price.deal)!== 'undefined'">
-          <ion-text class="game-card-deals">NT${{item.price.deal}}</ion-text>
-          <ion-text class="game-card-sales-price">
-            <s>NT${{item.price.amount}}</s>
-          </ion-text > 
+      <div class="game-top-card" @click="gameLink(item.id)">
+        <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-top-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart?.url + imageQuality} ); `"></div>
+        <div v-else class="game-top-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart?.url + imageQuality}); `"></div>
+        
+        <div class="game-top-section">
+          
+          <img  :alt="item.title" class="game-top-box-image" v-if="'featurepromotionalsquareart' in item.images" v-lazy="{ src: item.images.featurepromotionalsquareart?.url + imageQuality} ">
+          <img  :alt="item.title" class="game-top-box-image" v-else-if ="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
+          <img  :alt="item.title" class="game-top-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
         </div>
-        <div v-else>
-          <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
-            免費
+        <div class="game-top-card-info">
+          <ion-text class="game-top-card-title">{{item.title}}</ion-text>
+          <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-top-card-priceoff">{{item.price.off}}% off</span>
+
+          <div  v-if="typeof(item.price.deal)!== 'undefined'">
+            <ion-text class="game-top-card-deals">NT${{item.price.deal}}</ion-text>
+            <br/>
+            <ion-text class="game-top-card-sales-price">
+              <s>NT${{item.price.amount}}</s>
+            </ion-text > 
           </div>
-          <div v-if="item.price.amount == '0' && item.sold_separately == false">
-              尚未發售
-            </div>
           <div v-else>
-            <ion-text class="game-card-price">NT${{item.price.amount}}</ion-text>
+            <div v-if="item.price.amount == '0' && item.sold_separately == true" class="game-card-free">
+              免費
+            </div>
+            <div v-if="item.price.amount == '0' && item.sold_separately == false">
+                尚未發售
+              </div>
+            <div v-else>
+              <ion-text class="game-top-card-price">NT${{item.price.amount}}</ion-text>
+            </div>
           </div>
-        </div>
-        <div>
-          <ion-text class="game-card-developer">開發商:{{item.developer}}</ion-text>
-        </div>
-        <div>
-          <ion-text class="game-card-title">{{item.title}}</ion-text>
-        </div>
+          <div>
+            <ion-text class="game-top-card-developer">開發商:{{item.developer}}</ion-text>
+          </div>
+      </div>
       </div>
     </swiper-slide>
   </swiper>
@@ -82,7 +88,7 @@ import 'swiper/css/virtual';
 
 import { Pagination, Navigation, Virtual } from 'swiper';
 export default defineComponent({
-  name: 'GameSimpleListCard',
+  name: 'GameTopListCard',
   components: { IonText,IonSkeletonText,Swiper,SwiperSlide,IonThumbnail },
   props: {
     'url':{
@@ -105,16 +111,16 @@ export default defineComponent({
     let swiperOptions = {
       breakpoints: {       
         320: {       
-          slidesPerView: 3,
+          slidesPerView: 1,
           spaceBetween: 10     
         },          
         770: {       
-          slidesPerView: 3,       
+          slidesPerView: 1,       
           spaceBetween: 50     
         },   
     
         771: {       
-          slidesPerView: 6,       
+          slidesPerView: 1,       
           spaceBetween: 30     
         } 
       }  
@@ -142,9 +148,13 @@ export default defineComponent({
     onMounted(() => {
         axios.get(props.url)
           .then((res)=>{
-              data.gamelistdata = res.data
-              data.loaded = false
-              //console.log(data.gamelistdata)
+            data.gamelistdata = (res.data).sort(function (a, b) {
+              return a.price.off < b.price.off ? 1 : -1;
+            });
+            data.gamelistdata.splice(3, 10); 
+            //data.gamelistdata = res.data
+            data.loaded = false
+            //console.log(data.gamelistdata)
         })
       });
     
@@ -173,7 +183,7 @@ export default defineComponent({
 
 <style scoped>
   ion-thumbnail {
-    --size: 100%;
+    --size: 30%;
     --border-radius: 14px;
   }
 </style>

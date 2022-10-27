@@ -58,18 +58,6 @@ ion-back-button {
   color: #FFFFFF;
 }
 
-.game-detail-card-backgroud{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover !important;
-  filter: blur(10px);
-  -webkit-filter: blur(10px);
-  opacity: .4;
-  }
-
 .cardswiper{
   height: 45vh;
 }
@@ -78,7 +66,6 @@ ion-back-button {
   height: 45vh;
 }
 
-  .
 /*
 game-list-card
 */
@@ -165,6 +152,88 @@ game-list-card
   background-position: center;
 }
 
+.game-top-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: linear-gradient(to bottom, #5FA24E,#5FA24E, #FFFFFF);
+  border-radius: 10px;
+  height: 100%;
+}
+
+.game-top-box-image{
+  width: 30vw;
+}
+
+.game-top-card-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #FFFFFF;
+  z-index:1;
+  margin:0 5% 0 5%;
+  font-weight:600;
+}
+
+.game-top-section{
+  z-index:1;
+}
+
+.game-top-card-title{
+  font-size: 2.5em;
+}
+
+.game-top-card-deals{
+  font-size: 2em;
+}
+
+.game-top-card-sales-price{
+  font-weight:300;
+}
+
+.game-top-card-backgroud{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  opacity: .4;
+}
+
+.game-top-card-priceoff{
+  background-color:darkorange;
+  border-radius:5px;
+  text-align:center;
+  font-size:1.5em;
+}
+
+@media screen and (max-width:768px) {
+
+  .game-top-section{
+    display:none;
+  }
+
+  .game-top-card-backgroud{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    opacity: .5;
+  }
+
+  .game-top-card-deals{
+    font-weight:500;
+    
+  }
+  
+}
 
 /*
 game-detail-card
@@ -231,6 +300,18 @@ game-detail-card
   background-image: url('assets/imgs/xbox-logo.png') ;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.game-detail-card-backgroud{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  opacity: .4;
 }
 
 @media screen and (max-width:768px) {
