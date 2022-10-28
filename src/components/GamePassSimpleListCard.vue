@@ -99,7 +99,7 @@ export default defineComponent({
   },
   setup(props) {
     const axios = inject('axios') 
-    const imageQuality = '?w=800&q=50'
+    const imageQuality = '?w=500&q=40'
     const data = reactive({
         gamelistdata:[],
         loaded:true,
