@@ -98,7 +98,7 @@ export default defineComponent({
     }
     useMeta({ 
       title: '遊戲列表',
-      description : 'XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開。', 
+      description : 'XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開，讓你能透過簡單快速的介面探索所有XBOX主機的樂趣。', 
       link : {
         rel : 'canonical',
         href : 'https://xboxstore.gameqb.net/',
