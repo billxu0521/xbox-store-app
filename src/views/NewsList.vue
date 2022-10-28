@@ -41,6 +41,10 @@ export default  {
     useMeta({ 
       title: '新聞列表',
       description : '新聞列表', 
+      link : {
+        rel : 'canonical',
+        href : 'https://xboxstore.gameqb.net/',
+      }
      
     })
     const url = 'api/news' ;

@@ -44,7 +44,10 @@ export default defineComponent({
     useMeta({ 
       title: 'XboxPass遊戲列表',
       description : '顯示XBOX GamePass遊戲列表', 
-      
+      link : {
+        rel : 'canonical',
+        href : 'https://xboxstore.gameqb.net/',
+      }
     })
   },
   methods: {

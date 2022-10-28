@@ -48,6 +48,10 @@ export default defineComponent({
     useMeta({ 
       title: '遊戲詳細資訊',
       description : '遊戲資訊', 
+      link : {
+        rel : 'canonical',
+        href : 'https://xboxstore.gameqb.net/',
+      }
 
     })
 
