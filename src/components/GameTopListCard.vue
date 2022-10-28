@@ -32,7 +32,7 @@
       @swiper="setSwiperRef">
     <swiper-slide v-for="(item) in data.gamelistdata"
         :key="item.title">
-      <div class="game-top-card" @click="gameLink(item.id)">
+      <article class="game-top-card" @click="gameLink(item.id)">
         <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-top-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart?.url + imageQuality} ); `"></div>
         <div v-else class="game-top-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.brandedkeyart?.url + imageQuality}); `"></div>
         
@@ -67,8 +67,8 @@
           <div>
             <ion-text class="game-top-card-developer">開發商:{{item.developer}}</ion-text>
           </div>
-      </div>
-      </div>
+        </div>
+      </article>
     </swiper-slide>
   </swiper>
 </template>

@@ -39,8 +39,12 @@ ion-back-button {
 
 .game-card-title{
   font-size: 1.2em;
+  font-weight: 500;    
+}
+
+.game-card-title a{
+  text-decoration: none;
   color: #4F4F4F		;
-  font-weight: 500;
 }
 
 .card-xbox-container-row{

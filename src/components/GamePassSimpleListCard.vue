@@ -36,7 +36,7 @@
       @swiper="setSwiperRef">
     <swiper-slide v-for="(item) in data.gamelistdata"
         :key="item.title">
-      <div class="game-card" @click="gameLink(item.id)">
+      <article class="game-card" @click="gameLink(item.id)">
         <ion-thumbnail class="game-box-thumbnail">
           <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
           <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
@@ -65,10 +65,10 @@
           <ion-text class="game-card-developer">開發商:{{item.developer}}</ion-text>
         </div>
         <div>
-          <ion-text class="game-card-title">{{item.title}}</ion-text>
+          <ion-text class="game-card-title"><a :href=" 'game/'+item.id">{{item.title}}</a></ion-text>
         </div>
         
-      </div>
+      </article>
     </swiper-slide>
   </swiper>
 
