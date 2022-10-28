@@ -20,7 +20,7 @@
 
 <script>
 import {IonCol,IonButton,IonRow,IonGrid,IonPage, IonContent } from '@ionic/vue';
-import { onMounted,defineComponent} from 'vue';
+import { defineComponent} from 'vue';
 
 export default defineComponent({
   name: 'PageNotFound',

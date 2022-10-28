@@ -24,7 +24,8 @@
               <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
               <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
               <img :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-              <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality }">     
+              <img :alt="item.title" class="game-box-image" v-else-if="'brandedkeyart' in item.images" v-lazy="{ src: item.images.brandedkeyart?.url + imageQuality }">     
+              <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.poster?.url + imageQuality }">     
             </ion-thumbnail>
             <ion-subtitle >開發商:{{item.developer}}</ion-subtitle>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
@@ -113,8 +114,10 @@ export default defineComponent({
             (res.data).forEach(element => {
               data.gamelistdata.push(element)
               data.loaded = false
-              console.log(data.gamelistdata)
             });
+      })
+      .catch(()=>{
+        console.log('error')
       })
       skipitems = skipitems + 12;  
     }
@@ -133,7 +136,7 @@ export default defineComponent({
     //等基本DOM渲染後再讀資料
     onMounted(() => {
       pushData();
-    });
+    })
     
     return {
       data,
