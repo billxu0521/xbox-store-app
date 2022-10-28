@@ -55,7 +55,7 @@ export default  {
   setup() {
     useMeta({ 
       title: 'XboxPass遊戲列表',
-      description : '顯示XBOX GamePass遊戲列表', 
+      description : 'XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開。', 
      
     })
 

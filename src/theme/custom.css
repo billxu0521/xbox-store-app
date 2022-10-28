@@ -6,6 +6,11 @@ gernal layout
 	--ion-background-color-rgb: 255,255,255;
 }
 
+.web-title{
+  margin:auto;
+  text-align:center;
+}
+
 ion-back-button {
   display: block;
 }
