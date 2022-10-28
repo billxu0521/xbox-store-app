@@ -155,7 +155,11 @@ export default defineComponent({
           .then((res)=>{
               data.gamedetaildata = res.data
               handleChange(data.gamedetaildata[0].title)
-        })
+            })
+          .catch(()=>{
+            console.log('error')
+            window.location.href =  '../404';
+          })
       });
     
     return {

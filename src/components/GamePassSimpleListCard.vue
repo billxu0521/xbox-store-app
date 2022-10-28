@@ -153,6 +153,9 @@ export default defineComponent({
               data.loaded = false
              
         })
+        .catch(()=>{
+          console.log('error')
+        })
       });
     
     return {

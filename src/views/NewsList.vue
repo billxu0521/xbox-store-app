@@ -6,20 +6,17 @@
           <ion-title size="large">NewsList</ion-title>
         </ion-toolbar>
       </ion-header>
-
         <ion-card v-for="(item) in data.gamenewsdata"
         :key="item.title">
           <ion-thumbnail>
             <ion-img :src="item.image"></ion-img>
           </ion-thumbnail>
           <ion-card-header>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
             <ion-card-title>{{item.title}}</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
-            <a :href="item.link" target="_blank">view source</a>
-            {{item.description}}
+            <a :href="item.link" target="_blank">觀看來源</a>
+            <ion-card-subtitle>{{item.description}}</ion-card-subtitle>            
           </ion-card-content>
         </ion-card>
 

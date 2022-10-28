@@ -109,6 +109,9 @@ export default defineComponent({
               data.loaded = false
               console.log(data.gamelistdata)
         })
+        .catch(()=>{
+          console.log('error')
+        })
     });
     
     return {

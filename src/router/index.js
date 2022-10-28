@@ -39,11 +39,22 @@ const routes = [
         name: 'GamePass',
         component: () => import('@/views/GamePassList.vue'),
       },
-    
+      { 
+        path: '/:pathMatch(.*)*', 
+        name: 'NotFound', 
+        component: () => import('@/views/PageNotFound.vue'),
+      },
+      { 
+        path: '/404', 
+        name: 'NotFound', 
+        component: () => import('@/views/PageNotFound.vue'),
+      },
       
     ],
     
-  },
+  },    
+  
+
  
   
   
