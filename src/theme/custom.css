@@ -75,6 +75,10 @@ ion-back-button {
   height: 45vh;
 }
 
+.footer-text{
+  font-size: 0.5em;
+}
+
 /*
 game-list-card
 */
@@ -129,7 +133,7 @@ game-list-card
 .game-card-price {
   color: #019858;
   font-size: 1.5em;
-  text-shadow: 0em .1em 0.1em #BEBEBE;  
+   
 }
 .game-card-sales-price {
   color: grey;
@@ -141,7 +145,7 @@ game-list-card
   color: #019858;
   font-size: 1.5em;
   font-weight: 500;
-  text-shadow: 0em .1em 0.1em #BEBEBE;  
+  
 }
 
 .game-box-thumbnail{
@@ -296,7 +300,6 @@ game-detail-card
   color: #019858;
   font-size: 2em;
   font-weight: 500;
-  text-shadow: 0em .1em 0.1em #BEBEBE;  
 }
 
 .game-detail-card-price{
@@ -332,14 +335,12 @@ game-detail-card
   .game-card-sales-price {
     color: grey;
     font-size: 1em;
-    text-shadow: 0em .1em 0.1em #BEBEBE;  
   }
   
   .game-card-deals {
     color: #019858;
     font-size: 1em;
     font-weight: 500;
-    text-shadow: 0em .1em 0.1em #BEBEBE;  
   }
 
   .game-card-free{
