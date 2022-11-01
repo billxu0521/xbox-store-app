@@ -71,7 +71,7 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center footer-text">
-            本網站由<a href="https://billxu.net/">橫隔膜</a>與「<a href="https://h9856.gameqb.net/">吹著魔笛的浮士德</a>」共同製作。
+            本網站由<a href="https://billxu.net/">橫隔膜</a>與「<a href="https://h9856.gameqb.net/">吹著魔笛的浮士德</a>」共同製作。<a href="/updatelist">更新紀錄</a>
           </ion-col>
         </ion-row>
       </ion-grid>

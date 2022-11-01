@@ -59,6 +59,14 @@
         </div>
         </ion-col>
       </ion-row>
+      <ion-row class="">
+        <ion-col class="ion-text-center" >
+          <ion-text v-if="checkSimpleChinese(item.supportedlanguages)">支援簡體</ion-text>
+          <br/>
+          <ion-text v-if="checkTraditionalChinese(item.supportedlanguages)">支援繁體</ion-text>
+        </ion-col>
+      </ion-row>
+   
       <ion-row class="ion-align-items-center">
         <ion-col class="ion-text-center">
           <ion-button :href="`https://www.xbox.com/zh-TW/games/store/a/${item.id}`" target="_blank">前往購買</ion-button>
@@ -150,17 +158,18 @@ export default defineComponent({
     
     //等基本DOM渲染後再讀資料
     onMounted(() => {
-        const url = `/api/games?id=${id}&store=${store}&lang=${lang}`;
-        axios.get(url)
-          .then((res)=>{
-              data.gamedetaildata = res.data
-              handleChange(data.gamedetaildata[0].title)
-            })
-          .catch(()=>{
-            console.log('error')
-            window.location.href =  '../404';
+      const url = `/api/games?id=${id}&store=${store}&lang=${lang}`;
+      axios.get(url)
+        .then((res)=>{
+            data.gamedetaildata = res.data
+            console.log( data.gamedetaildata)
+            handleChange(data.gamedetaildata[0].title)
           })
-      });
+        .catch(()=>{
+          console.log('error')
+          window.location.href =  '../404';
+        })
+    });
     
     return {
       data,
@@ -182,6 +191,21 @@ export default defineComponent({
       let date = timecover.getDate();
       let month = timecover.getMonth();
       return `${year} / ${month+1} / ${date}`
+    },
+    checkSimpleChinese(data){
+      if(Object.values(data).includes('zh-hans')){
+        return true
+      }
+      else{
+        return false
+      }
+    },
+    checkTraditionalChinese(data){
+      if(Object.values(data).includes('zh-hant')){
+        return true
+      }else{
+        return false
+      }
     }
   },
  
