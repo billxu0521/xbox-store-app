@@ -64,6 +64,8 @@
           <ion-text v-if="checkTraditionalChinese(item.supportedlanguages)">支援繁體中文</ion-text>
           <br/>
           <ion-text v-if="checkSimpleChinese(item.supportedlanguages)">支援簡體中文</ion-text>
+          <br/>
+          <ion-text v-if="checkChinese(item.supportedlanguages)">支援中文</ion-text>
         </ion-col>
       </ion-row>
    
@@ -202,6 +204,13 @@ export default defineComponent({
     },
     checkTraditionalChinese(data){
       if(Object.values(data).includes('zh-hant')){
+        return true
+      }else{
+        return false
+      }
+    },
+    checkChinese(data){
+      if(Object.values(data).includes('zh')){
         return true
       }else{
         return false

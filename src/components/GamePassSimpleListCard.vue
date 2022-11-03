@@ -63,6 +63,7 @@
         <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">EaPlay</span>
         <span v-if="checkSimpleChinese(item.supportedlanguages)" class="game-card-important-tag game-card-chinese">繁體中文</span>
         <span v-if="checkTraditionalChinese(item.supportedlanguages)" class="game-card-important-tag game-card-chinese">簡體中文</span>
+        <span v-if="checkChinese(item.supportedlanguages)" class="game-card-important-tag game-card-chinese">中文</span>
         <div>
           <ion-text class="game-card-developer">開發商:{{item.developer}}</ion-text>
         </div>
@@ -189,6 +190,13 @@ export default defineComponent({
       },
       checkTraditionalChinese(data){
         if(Object.values(data).includes('zh-hant')){
+          return true
+        }else{
+          return false
+        }
+      },
+      checkChinese(data){
+        if(Object.values(data).includes('zh')){
           return true
         }else{
           return false
