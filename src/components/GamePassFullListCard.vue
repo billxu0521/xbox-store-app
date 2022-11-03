@@ -23,12 +23,16 @@
           <ion-col class="full-game game-card ion-text-center" size="12" size-xs="6" size-sm="6" size-md="4" size-lg="3"  v-for="(item) in data.gamelistdata"
             :key="item.title" @click="gameLink(item.id)">
             <ion-thumbnail class="game-box-thumbnail">
-              <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
-              <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
-              <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">EaPlay</span>
               <img :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
               <img :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url + imageQuality}">    
             </ion-thumbnail>
+            <div class="game-card-important-tag-container">
+              <span v-if="typeof(item.price.deal)!== 'undefined'" class="game-card-important-tag game-card-price-off">{{item.price.off}}% off</span>
+              <span v-if="item.game_pass === true" class="game-card-important-tag game-card-gamepass">GamePass</span>
+              <span v-if="item.ea_play === true" class="game-card-important-tag game-card-eaplay">EaPlay</span>
+              <span v-if="checkSimpleChinese(item.supportedlanguages)" class="game-card-important-tag game-card-chinese">繁體中文</span>
+              <span v-if="checkTraditionalChinese(item.supportedlanguages)" class="game-card-important-tag game-card-chinese">簡體中文</span>
+            </div>
             <div>開發商:{{item.developer}}</div>
             <div v-if="typeof(item.price.deal)!== 'undefined'">
               <ion-text class="game-card-sales-price">
@@ -126,6 +130,21 @@ export default defineComponent({
       },
       goBack(){
         this.$router.go(-1);
+      },
+      checkSimpleChinese(data){
+        if(Object.values(data).includes('zh-hans')){
+          return true
+        }
+        else{
+          return false
+        }
+      },
+      checkTraditionalChinese(data){
+        if(Object.values(data).includes('zh-hant')){
+          return true
+        }else{
+          return false
+        }
       }
     },
 });

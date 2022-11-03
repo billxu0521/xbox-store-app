@@ -61,9 +61,9 @@
       </ion-row>
       <ion-row class="">
         <ion-col class="ion-text-center" >
-          <ion-text v-if="checkSimpleChinese(item.supportedlanguages)">支援簡體</ion-text>
+          <ion-text v-if="checkTraditionalChinese(item.supportedlanguages)">支援繁體中文</ion-text>
           <br/>
-          <ion-text v-if="checkTraditionalChinese(item.supportedlanguages)">支援繁體</ion-text>
+          <ion-text v-if="checkSimpleChinese(item.supportedlanguages)">支援簡體中文</ion-text>
         </ion-col>
       </ion-row>
    

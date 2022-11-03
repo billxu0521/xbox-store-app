@@ -92,22 +92,22 @@ game-list-card
   border-radius: 5px;
 }
 
+.game-card-important-tag-container{
+  margin:1%;
+}
+
 .game-card-price-off {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+  padding: 1%;
   width: 40%;
   height: 10%;
   text-align: center;
   font: bold;
-  font-size: 1.5em;
+  font-size: 1em;
   color: white;
   background-color: seagreen;
 }
 .game-card-gamepass{
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+  padding:1%;
   width: 40%;
   height: 10%;
   text-align: center;
@@ -117,15 +117,24 @@ game-list-card
   background-color: darkorange;
 }
 
-.game-card-eaplay{
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+.game-card-chinese{
+  padding:1%;
   width: 40%;
   height: 10%;
   text-align: center;
   font: bold;
-  font-size: 1.2em;
+  font-size: 1em;
+  color: white;
+  background-color: darkred;
+}
+
+.game-card-eaplay{
+  padding:1%;
+  width: 40%;
+  height: 10%;
+  text-align: center;
+  font: bold;
+  font-size: 1em;
   color: white;
   background-color: darkred;
 }
@@ -348,9 +357,7 @@ game-detail-card
   }
 
   .game-card-price-off {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
+    
     text-align: center;
     font: bold;
     font-size: 0.8em;
