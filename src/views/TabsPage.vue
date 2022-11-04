@@ -67,12 +67,16 @@
     setup() {
       const router = useRouter();
       const handleRefresh = (event) => {
-      setTimeout(() => {
-        // Any calls to load data go here
-        location.reload();
-        event.target.complete();
-      }, 500);
-    };
+        console.log('Begin async operation');
+        
+
+        setTimeout(() => {
+          // Any calls to load data go here
+          console.log('Async operation has ended');
+          location.reload();
+          event.target.complete();
+        }, 500);
+      };
       return {
         router,
         ellipse,
