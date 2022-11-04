@@ -6,9 +6,11 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
-       <ion-refresher-content></ion-refresher-content>
+   
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
+
       <ion-tabs>
         <ion-router-outlet></ion-router-outlet>
         <ion-tab-bar slot="bottom">
