@@ -10,7 +10,12 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
+    <ion-content >
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
     <game-pass-full-list-card></game-pass-full-list-card>
+    </ion-content >
   </ion-page>
 </template>
 
@@ -41,6 +46,12 @@ export default defineComponent({
     GamePassFullListCard
    },
   setup() {
+    const handleRefresh = (event) => {
+      setTimeout(() => {
+        location.reload();
+        event.target.complete();
+      }, 500);
+    };
     useMeta({ 
       title: 'XboxPass遊戲列表',
       description : '顯示XBOX GamePass遊戲列表', 
@@ -49,6 +60,10 @@ export default defineComponent({
         href : 'https://xboxstore.gameqb.net/',
       }
     })
+
+    return {
+      handleRefresh
+    };
   },
   methods: {
     goBack(){

@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import {IonRefresher,IonRefresherContent,IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
+import { IonRefresher,IonRefresherContent,IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
 import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
 import GameTopListCard  from '@/components/GameTopListCard.vue';
@@ -105,17 +105,12 @@ export default defineComponent({
       pageview('/gamelist')
     }
     const handleRefresh = (event) => {
-        console.log('Begin async operation');
-        
-
-        setTimeout(() => {
-          // Any calls to load data go here
-          console.log('Async operation has ended');
-          location.reload();
-          event.target.complete();
-        }, 500);
-      };
-    
+      setTimeout(() => {
+        location.reload();
+        event.target.complete();
+      }, 500);
+    };
+  
     useMeta({ 
       title: '遊戲列表',
       description : 'XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開，讓你能透過簡單快速的介面探索所有XBOX主機的樂趣。', 

@@ -24,7 +24,8 @@
 import { 
   IonPage ,
   IonBackButton,
-  IonRefresher,IonRefresherContent,
+  IonRefresher,
+  IonRefresherContent,
 } from '@ionic/vue';
 import { defineComponent} from 'vue';
 import GameFullListCard  from '@/components/GameFullListCard.vue';
@@ -40,11 +41,7 @@ export default defineComponent({
    },
   setup() {
     const handleRefresh = (event) => {
-      console.log('Begin async operation');
-    
       setTimeout(() => {
-        // Any calls to load data go here
-        console.log('Async operation has ended');
         location.reload();
         event.target.complete();
       }, 500);
@@ -55,7 +52,6 @@ export default defineComponent({
      
     })
     return {
-     
       handleRefresh
     };
   },

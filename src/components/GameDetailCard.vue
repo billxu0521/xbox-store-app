@@ -1,5 +1,5 @@
 <template>
-  <ion-content v-for="(item) in data.gamedetaildata"
+  <div v-for="(item) in data.gamedetaildata"
     :key="item.title" :fullscreen="true" class="game-detail-card-content">
     <div v-if="'boxart' in item.images && typeof(item.images.boxart.url) !== 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart.url + imageQuality} ); `"></div>
     <div  v-else-if="'boxart' in item.images && typeof(item.images.boxart.url) === 'array'" class="game-detail-card-backgroud"  :style="`background-image: linear-gradient(transparent,#FFFFFF),url(${item.images.boxart[1].url + imageQuality}); `"></div>
@@ -103,11 +103,11 @@
         </ion-col>
       </ion-row>      
      </ion-grid>
-  </ion-content>
+    </div>
 </template>
 
 <script >
-import { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,IonChip,IonContent} from '@ionic/vue';
+import { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,IonChip} from '@ionic/vue';
 import { reactive,onMounted,defineComponent } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -126,7 +126,7 @@ const lang = 'zh-TW';
 
 export default defineComponent({
   name: 'GameDetailCard',
-  components: { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,Swiper,SwiperSlide,IonChip,IonContent },
+  components: { IonGrid,IonButton,IonText,IonRow,IonCol,IonThumbnail,Swiper,SwiperSlide,IonChip },
   emits: ["getGameitle"], // <--- add this line
   setup(_,{ emit }) {
     const router = useRouter();

@@ -10,7 +10,12 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
+  <ion-content>
+    <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <game-detail-card @getGameitle="updateInfo" ></game-detail-card>
+  </ion-content>
   </ion-page>
 </template>
 
@@ -22,7 +27,9 @@ import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonRefresher,
+  IonRefresherContent,
 } from '@ionic/vue';
 import { reactive,onMounted,defineComponent} from 'vue';
 import GameDetailCard  from '@/components/GameDetailCard.vue';
@@ -38,6 +45,8 @@ export default defineComponent({
     IonToolbar,
     IonButtons,
     IonBackButton,
+    IonRefresher,
+    IonRefresherContent,
     GameDetailCard
    },
    setup() {
@@ -55,6 +64,13 @@ export default defineComponent({
 
     })
 
+    const handleRefresh = (event) => {
+      setTimeout(() => {
+        location.reload();
+        event.target.complete();
+      }, 500);
+    };
+
     //等基本DOM渲染後再讀資料
     onMounted(() => {
       
@@ -62,6 +78,7 @@ export default defineComponent({
     
     return {
       data,
+      handleRefresh
       };
   },
   methods: {

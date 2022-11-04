@@ -1,6 +1,9 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -45,19 +48,26 @@
 </template>
 
 <script>
-import { IonGrid,IonRow,IonText,IonCol,IonPage, IonContent } from '@ionic/vue';
+import { IonRefresher,IonRefresherContent,IonGrid,IonRow,IonText,IonCol,IonPage, IonContent } from '@ionic/vue';
 import GamePassSimpleListCard  from '@/components/GamePassSimpleListCard.vue';
 import { useMeta } from 'vue-meta'
 
 export default  {
   name: 'GamePassList',
-  components: { IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard, IonContent, IonPage },
+  components: { IonRefresher,IonRefresherContent,IonGrid,IonRow,IonText,IonCol,GamePassSimpleListCard, IonContent, IonPage },
   setup() {
     useMeta({ 
       title: 'XboxPass遊戲列表',
       description : 'XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開。', 
      
     })
+
+    const handleRefresh = (event) => {
+      setTimeout(() => {
+        location.reload();
+        event.target.complete();
+      }, 500);
+    };
 
     const store = 'TW'; 
     const lang = 'zh-TW';
@@ -67,6 +77,7 @@ export default  {
     }
     return {
       gameLink,
+      handleRefresh,
     };
   },
   methods: {
