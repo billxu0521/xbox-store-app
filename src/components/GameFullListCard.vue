@@ -1,5 +1,5 @@
 <template>
-    <ion-content >
+    
       <ion-grid v-if="data.loaded">
         <ion-row class="ion-justify-content-between">
           <ion-col class="full-game game-card ion-text-center" size="12" size-xs="6" size-sm="6" size-md="4" size-lg="3" v-for="(item) in 12"
@@ -69,13 +69,12 @@
   
         </ion-row>
       </ion-grid>
-    </ion-content>
+   
 </template>
 
 <script>
 import { 
   IonSkeletonText,
-  IonContent, 
   IonInfiniteScroll, 
   IonInfiniteScrollContent,
 } from '@ionic/vue';
@@ -87,7 +86,6 @@ export default defineComponent({
   name: 'GameFullListCard',
   components: { 
     IonSkeletonText,
-    IonContent, 
     IonInfiniteScroll, 
     IonInfiniteScrollContent,
    },

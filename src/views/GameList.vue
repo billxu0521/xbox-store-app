@@ -1,11 +1,9 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      
       <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-
       <ion-grid>
         <ion-row>
           <ion-col>
