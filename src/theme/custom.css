@@ -254,6 +254,12 @@ game-list-card
     font-weight:500;
     
   }
+
+  .game-card-chinese{
+   
+    font-size: 0.8em;
+    
+  }
   
 }
 
@@ -371,7 +377,7 @@ game-detail-card
   }
 
   .cardswiper{
-    max-height: 50vh;
+    max-height: 45vh;
   }
   .passcardswiper{
     height: 35vh;
