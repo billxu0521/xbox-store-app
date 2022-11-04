@@ -371,7 +371,7 @@ game-detail-card
   }
 
   .cardswiper{
-    height: 40vh;
+    max-height: 50vh;
   }
   .passcardswiper{
     height: 35vh;

@@ -145,6 +145,7 @@ export default defineComponent({
    
     //等基本DOM渲染後再讀資料
     onMounted(() => {
+      console.log(props.url)
         axios.get(props.url)
           .then((res)=>{
               data.gamelistdata = res.data

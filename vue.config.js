@@ -13,6 +13,7 @@ module.exports = defineConfig({
     config.plugin("sitemap").use(SitemapPlugin, [
       {
         base: 'https://xboxstore.gameqb.net/',
+        //base: 'localhost',
         paths: routes,
         options: {
           //生成的站点地图文件名
@@ -25,8 +26,8 @@ module.exports = defineConfig({
       }
     ])
 
-  }
-  //devServer: {
+  },
+  // devServer: {
     //open: "ture",
     // host: "0.0.0.0",
     // port: "80",
@@ -34,7 +35,7 @@ module.exports = defineConfig({
     //hot: "only",
     // proxy: {
     //   '/api' : {
-    //     target: "http://localhost:3031",
+    //     target: "https://xboxstoreapi.gameqb.net/",
     //     ws: true,
     //     changeOrigin: true,
     //     pathRewrite: {
