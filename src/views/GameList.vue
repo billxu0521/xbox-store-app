@@ -2,6 +2,10 @@
   <ion-page>
     <ion-content :fullscreen="true">
       
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -81,7 +85,7 @@
 </template>
 
 <script>
-import {IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
+import {IonRefresher,IonRefresherContent,IonGrid,IonCol,IonRow,IonText,IonButton,IonPage, IonContent } from '@ionic/vue';
 import { onMounted,defineComponent} from 'vue';
 import GameSimpleListCard  from '@/components/GameSimpleListCard.vue';
 import GameTopListCard  from '@/components/GameTopListCard.vue';
@@ -90,7 +94,7 @@ import { useMeta } from 'vue-meta'
 
 export default defineComponent({
   name: 'GameList',
-  components: { IonGrid,IonCol,IonRow,IonText,IonButton, IonContent, IonPage ,GameSimpleListCard,GameTopListCard},
+  components: { IonRefresher,IonRefresherContent,IonGrid,IonCol,IonRow,IonText,IonButton, IonContent, IonPage ,GameSimpleListCard,GameTopListCard},
   props: {
     timeout: { type: Number, default: 1000 },
   },
@@ -102,6 +106,17 @@ export default defineComponent({
     const login = () => {
       pageview('/gamelist')
     }
+    const handleRefresh = (event) => {
+        console.log('Begin async operation');
+        
+
+        setTimeout(() => {
+          // Any calls to load data go here
+          console.log('Async operation has ended');
+          location.reload();
+          event.target.complete();
+        }, 500);
+      };
     
     useMeta({ 
       title: '遊戲列表',
@@ -125,6 +140,7 @@ export default defineComponent({
       gameLink,
       logoimage,
       login,
+      handleRefresh
     };
   },
   

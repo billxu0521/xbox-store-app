@@ -7,10 +7,6 @@
     </ion-header>
     <ion-content>
    
-      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-
       <ion-tabs>
         <ion-router-outlet></ion-router-outlet>
         <ion-tab-bar slot="bottom">
@@ -43,8 +39,6 @@
     IonToolbar,
     IonHeader,
     IonRouterOutlet,
-    IonRefresher, 
-    IonRefresherContent,
   } from '@ionic/vue';
   import { ellipse, square, triangle } from 'ionicons/icons';
   import { useRouter } from 'vue-router';
@@ -61,28 +55,16 @@
       IonTabButton,
       IonPage,
       IonRouterOutlet,
-      IonRefresher, 
-      IonRefresherContent,
+  
     },
     setup() {
       const router = useRouter();
-      const handleRefresh = (event) => {
-        console.log('Begin async operation');
-        
-
-        setTimeout(() => {
-          // Any calls to load data go here
-          console.log('Async operation has ended');
-          location.reload();
-          event.target.complete();
-        }, 500);
-      };
+      
       return {
         router,
         ellipse,
         square,
         triangle,
-        handleRefresh
       };
     },
     methods: {
