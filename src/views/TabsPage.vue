@@ -68,12 +68,12 @@
         deferredPrompt: null,
       });
 
-      const pwaInstall = () => {
-        if (states.deferredPrompt) {
-            states.deferredPrompt.prompt();
-            states.deferredPrompt = null;
-          }
-      }
+      // const pwaInstall = () => {
+      //   if (states.deferredPrompt) {
+      //       states.deferredPrompt.prompt();
+      //       states.deferredPrompt = null;
+      //     }
+      // }
      
       onMounted(() => {
         window.addEventListener("beforeinstallprompt", e => {
@@ -83,19 +83,19 @@
         window.addEventListener("appinstalled", () => {
           states.deferredPrompt = null;
         });
-        // document.querySelector("#app").addEventListener("click", () => { 
-        //   if (states.deferredPrompt) {
-        //     states.deferredPrompt.prompt();
-        //     states.deferredPrompt = null;
-        //   }
-        // });
+        document.querySelector("#app").addEventListener("click", () => { 
+          if (states.deferredPrompt) {
+            states.deferredPrompt.prompt();
+            states.deferredPrompt = null;
+          }
+        });
       });
       return {
         router,
         ellipse,
         square,
         triangle,
-        pwaInstall,
+        //pwaInstall,
       };
     },
     methods: {
