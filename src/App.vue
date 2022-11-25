@@ -9,7 +9,7 @@
 
 <script >
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
-import { defineComponent ,reactive, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 import { useMeta } from 'vue-meta'
 
 export default defineComponent({
@@ -24,24 +24,6 @@ export default defineComponent({
       htmlAttrs: { lang: 'zh-TW', amp: false }
     })
 
-    const states = reactive({
-      deferredPrompt: null,
-    });
-    onMounted(() => {
-      window.addEventListener("beforeinstallprompt", e => {
-        e.preventDefault();
-        states.deferredPrompt = e;
-      });
-      window.addEventListener("appinstalled", () => {
-        states.deferredPrompt = null;
-      });
-      document.querySelector("#app").addEventListener("click", () => { 
-        if (states.deferredPrompt) {
-          states.deferredPrompt.prompt();
-          states.deferredPrompt = null;
-        }
-      });
-    });
   }
 });
 </script>
