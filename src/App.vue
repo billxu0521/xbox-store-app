@@ -35,12 +35,12 @@ export default defineComponent({
       window.addEventListener("appinstalled", () => {
         states.deferredPrompt = null;
       });
-      document.querySelector("#app").addEventListener("click", () => { 
-        if (states.deferredPrompt) {
-          states.deferredPrompt.prompt();
-          states.deferredPrompt = null;
-        }
-      });
+      // document.querySelector("#app").addEventListener("click", () => { 
+      //   if (states.deferredPrompt) {
+      //     states.deferredPrompt.prompt();
+      //     states.deferredPrompt = null;
+      //   }
+      // });
     });
 
   }
