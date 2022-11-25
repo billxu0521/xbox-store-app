@@ -36,7 +36,7 @@
         <ion-thumbnail class="game-box-thumbnail">
           
           <img  :alt="item.title" class="game-box-image" v-if="'boxart' in item.images" v-lazy="{ src: item.images.boxart?.url + imageQuality} ">
-          <img  :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart.url }">    
+          <img  :alt="item.title" class="game-box-image" v-else v-lazy="{ src: item.images.brandedkeyart?.url }">    
         </ion-thumbnail>
         
         <div v-if="typeof(item.price.deal)!== 'undefined'">

@@ -68,7 +68,7 @@ ion-back-button {
 }
 
 .cardswiper{
-  height: 45vh;
+  height: 55vh;
 }
 
 .passcardswiper{
@@ -382,5 +382,7 @@ game-detail-card
   .passcardswiper{
     height: 35vh;
   }
-
+  .game-card-developer{
+    font-size: 0.6em;
+  }
 }

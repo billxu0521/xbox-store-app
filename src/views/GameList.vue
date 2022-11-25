@@ -23,7 +23,7 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center">
-            <ion-text >**遊戲實際售價請參閱官方網站或相關通路，本網站資訊僅供參考。**</ion-text>
+            <ion-text ><h2>**遊戲實際售價請參閱官方網站或相關通路，本網站資訊僅供參考。**</h2></ion-text>
           </ion-col>
         </ion-row>
         <ion-row>
