@@ -4,6 +4,9 @@
       更新紀錄：
       <ion-list>
         <ion-item>
+          <ion-label>2022/11/25:新增PWA下載，Android、PC限定。</ion-label>
+        </ion-item>
+        <ion-item>
           <ion-label>2022/11/04:微調版面，新增朝下方拖拉頁面可以重載入頁面的功能。</ion-label>
         </ion-item>
         <ion-item>
