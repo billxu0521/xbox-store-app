@@ -7,6 +7,7 @@ import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue3-lazyload'
 import VueGtag from "vue-gtag";
 import { createMetaManager } from 'vue-meta'
+import './registerServiceWorker';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';

@@ -149,7 +149,7 @@ export default defineComponent({
           .then((res)=>{
               data.gamelistdata = res.data
               data.loaded = false
-              //console.log(data.gamelistdata)
+              console.log(data.gamelistdata)
         })
         .catch(()=>{
           console.log('error')
