@@ -68,12 +68,12 @@
         deferredPrompt: null,
       });
 
-      // const pwaInstall = () => {
-      //   if (states.deferredPrompt) {
-      //       states.deferredPrompt.prompt();
-      //       states.deferredPrompt = null;
-      //     }
-      // }
+      const pwaInstall = () => {
+        if (states.deferredPrompt) {
+            states.deferredPrompt.prompt();
+            states.deferredPrompt = null;
+          }
+      }
      
       onMounted(() => {
         window.addEventListener("beforeinstallprompt", e => {
@@ -95,7 +95,7 @@
         ellipse,
         square,
         triangle,
-        //pwaInstall,
+        pwaInstall,
       };
     },
     methods: {
