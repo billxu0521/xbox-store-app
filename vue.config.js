@@ -27,6 +27,21 @@ module.exports = defineConfig({
     ])
 
   },
+  pwa:{
+    "name": "xbox-store",
+    "short_name": "xbox-store",
+    "theme_color": "#019858",
+    "icons": [
+      {
+        "src": "./img/icons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000000"
+  }
   // devServer: {
     //open: "ture",
     // host: "0.0.0.0",
