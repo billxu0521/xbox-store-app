@@ -28,7 +28,7 @@ module.exports = defineConfig({
 
   },
   pwa:{
-    "name": "xbox-store",
+    "name": "xbox-store-test",
     "short_name": "xbox-store",
     "theme_color": "#019858",
     "lang": "zh-Hant-TW",
