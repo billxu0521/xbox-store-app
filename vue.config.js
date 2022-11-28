@@ -31,6 +31,8 @@ module.exports = defineConfig({
     "name": "xbox-store",
     "short_name": "xbox-store",
     "theme_color": "#019858",
+    "lang": "zh-Hant-TW",
+    "description": "歡迎使用XBOX Game Pass 遊戲資訊網，XBOX Game Pass 遊戲資訊網可以快速查詢XBOX遊戲、XBOX Game Pass資訊：即將加入、遊戲總覽、即將離開，以及快速遊覽特價遊戲，讓你能透過簡單快速的介面探索所有XBOX主機的樂趣。",
     "icons": [
       {
         "src": "./img/icons/android-chrome-512x512.png",
