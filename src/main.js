@@ -53,7 +53,14 @@ const app = createApp(App)
 
 app.use(VueAxios, axios);
 app.provide('axios', app.config.globalProperties.axios) ; // provide 'axios'
-app.config.devtools = true;
+// 
+if (process.env.NODE_ENV === 'development') {
+  if ('__VUE_DEVTOOLS_GLOBAL_HOOK__' in window) {
+  // 
+    window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app
+  }
+  app.config.devtools = true
+}
 //axios.defaults.baseURL="http://localhost";
 //axios.defaults.baseURL="https://xbox-games-api-1s4z.vercel.app/";
 axios.defaults.baseURL = "https://xboxstoreapi.gameqb.net/"
