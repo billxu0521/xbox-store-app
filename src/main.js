@@ -30,6 +30,7 @@ import './theme/variables.css';
 import './theme/custom.css';
 import './registerServiceWorker'
 
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
@@ -51,8 +52,8 @@ const app = createApp(App)
   .use(createMetaManager());
 
 app.use(VueAxios, axios);
-app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
-
+app.provide('axios', app.config.globalProperties.axios) ; // provide 'axios'
+app.config.devtools = true;
 //axios.defaults.baseURL="http://localhost";
 //axios.defaults.baseURL="https://xbox-games-api-1s4z.vercel.app/";
 axios.defaults.baseURL = "https://xboxstoreapi.gameqb.net/"
